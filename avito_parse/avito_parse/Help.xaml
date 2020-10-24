@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="avito_parse.Help">
+    <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Spacing="0">
+                    <Button Clicked="OpenPopup" ClassId="0" Text="Почему не приходят уведомления"
+                         />
+                    <Button Clicked="OpenPopup" ClassId="5" Text="Как разрешить уведомления"
+                         />
+                    <Button Clicked="OpenPopup" ClassId="1" Text="Какие сайты поддерживаются"
+                         />                   
+                    <Button Clicked="OpenPopup" ClassId="2" Text="Распространённые неполадки"
+                         />
+                    <Button Clicked="OpenPopup" ClassId="3" Text="Инструкция"
+                         />
+                    <Button Clicked="OpenPopup" ClassId="4" Text="Обратная связь"
+                         />
+            </StackLayout>
+            <Button Text="Назад" 
+                VerticalOptions="EndAndExpand"
+                Clicked="GoBack" />
+        </StackLayout>
+            <ContentView x:Name="popupView" IsVisible="False" BackgroundColor="#9f0f0f0f" Padding="20, 0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" Spacing="10" Orientation="Vertical" BackgroundColor="White">
+                    <Label x:Name="text_label" Margin="30,10,0,0" FontSize="18" Text="" />
+                    <Button Margin="30,10" BackgroundColor="#BAD8D7" Clicked="ClosePopup" Text="Назад" VerticalOptions="EndAndExpand"></Button>
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
+</ContentPage>

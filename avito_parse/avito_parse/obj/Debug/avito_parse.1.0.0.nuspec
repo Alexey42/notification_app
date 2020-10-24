@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>avito_parse</id>
+    <version>1.0.0</version>
+    <authors>avito_parse</authors>
+    <owners>avito_parse</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="AngleSharp" version="0.13.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.VisualStudio.Services.InteractiveClient" version="16.153.0" exclude="Build,Analyzers" />
+        <dependency id="Xamarin.Essentials" version="1.3.1" exclude="Build,Analyzers" />
+        <dependency id="Xamarin.Forms" version="4.4.0.991537" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse\bin\Debug\netstandard2.0\avito_parse.dll" target="lib\netstandard2.0\avito_parse.dll" />
+  </files>
+</package>

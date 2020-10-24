@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:avito_parse;assembly=avito_parse"
+             x:Class="avito_parse.Tutorial">
+    <TabbedPage.Children>
+        <local:TutPage1 x:Name="p1" Appearing="p1App" />
+        <local:TutPage2 x:Name="p2" Appearing="p2App" />
+        <local:TutPage3 x:Name="p3" Appearing="p3App" />
+        <local:TutPage4 x:Name="p4" Appearing="p4App" />
+    </TabbedPage.Children>
+</TabbedPage>

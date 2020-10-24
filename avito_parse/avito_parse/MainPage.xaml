@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:avito_parse;assembly=avito_parse"
+             xmlns:controls="clr-namespace:MarcTron.Plugin.Controls;assembly=Plugin.MtAdmob"
+             mc:Ignorable="d"
+             x:Class="avito_parse.MainPage">
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Spacing="0">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                <Button x:Name="addNewTracking_button" 
+                            Clicked="AddNewTracking"
+                            Text="добавить новый поиск" 
+                            BackgroundColor="#4A8AF4" 
+                            HeightRequest="80"
+                            FontFamily="Arial"
+                        />
+
+                <Label x:Name="noTrackings_label" 
+                            Text="Добавьте новый отслеживаемый поиск"                            
+                            HorizontalOptions="Center"
+                            FontFamily="Arial"
+                            Margin="0, 100, 0, 0"
+                        />
+
+                <ListView x:Name="trackings_view" ItemsSource="{Binding Trackings.list}" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Button Text="{Binding Name}" Clicked="OpenPopup_Tracking" BackgroundColor="{Binding Color}" HeightRequest="50" Margin="0,5,0,0" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame x:Name="fastMode" CornerRadius="50" IsClippedToBounds="True" Padding="0" Margin="10,0,0,0"  HeightRequest="80" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#4A8AF4">
+                        <StackLayout
+                                         Orientation="Horizontal"
+                                         VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="CenterAndExpand"
+                                         HeightRequest="30"                         
+                                         WidthRequest="30">
+                            <Button x:Name="fastMode_button" ImageSource="{local:ImageResource avito_parse.Image.lightning.png}" Clicked="OpenPopup_FastMode" BackgroundColor="#4A8AF4" WidthRequest="30" HorizontalOptions="Center"></Button>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="faq" CornerRadius="50" IsClippedToBounds="True" Padding="0" Margin="0,0,10,0"  HeightRequest="80" WidthRequest="50" HorizontalOptions="EndAndExpand" BackgroundColor="#4A8AF4">
+                        <StackLayout 
+                                         Orientation="Horizontal"
+                                         VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="CenterAndExpand"
+                                         HeightRequest="30"    
+                                         WidthRequest="30">
+                            <Button x:Name="faq_button" ImageSource="{local:ImageResource avito_parse.Image.faq.png}" Clicked="OpenHelp" BackgroundColor="#4A8AF4" WidthRequest="30" HorizontalOptions="Center"></Button>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <controls:MTAdView x:Name="myAds"
+                                   IsVisible="true"                                   
+                                   AdsId="ca-app-pub-2209506349221532/6907539885"
+                                   VerticalOptions="EndAndExpand" >
+                    <controls:MTAdView.HeightRequest>
+                        <x:OnIdiom>
+                            <x:OnIdiom.Phone>50</x:OnIdiom.Phone>
+                            <x:OnIdiom.Tablet>90</x:OnIdiom.Tablet>
+                            <x:OnIdiom.Desktop>90</x:OnIdiom.Desktop>
+                        </x:OnIdiom>
+                    </controls:MTAdView.HeightRequest>
+                </controls:MTAdView>
+            </StackLayout>
+        </StackLayout>
+
+        <ContentView x:Name="popupView" IsVisible="False" BackgroundColor="#9f0f0f0f" Padding="20, 0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" Spacing="15" Orientation="Vertical" BackgroundColor="White">
+                <Label x:Name="countNew_label" Margin="50,10,0,0" FontSize="18" Text="Новых объявлений: 0" />
+                <Button Margin="30,10,30,0" BackgroundColor="#BAD8D7" Text="История" ContentLayout="Left,5" Clicked="OpenHistory"></Button>
+                <Button Margin="30,0,30,0" BackgroundColor="#BAD8D7" Text="Открыть" ContentLayout="Left,5" Clicked="OpenTracking"></Button>
+                <Button Margin="30,0" BackgroundColor="#BAD8D7" Text="Изменить" ContentLayout="Left,5"  Clicked="ChangeTracking"></Button>
+                <Button x:Name="pause_button" Margin="30,0" BackgroundColor="#BAD8D7" Text="Пауза" ContentLayout="Left,5" Clicked="PauseTracking" ></Button>
+                <Button Margin="100,0,100,0" BackgroundColor="#DC4C3F" Text="Удалить" ContentLayout="Left,5" Clicked="DeleteTracking"></Button>
+                <Button Margin="20,20" BackgroundColor="#3AE2CE" Text="Назад" ContentLayout="Left,5" Clicked="ClosePopup_Tracking"></Button>
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="popupFastMode" IsVisible="False" BackgroundColor="#9f0f0f0f" Padding="20, 0" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" Spacing="15" Orientation="Vertical" BackgroundColor="White">
+                <Label Margin="10,10,0,10" FontSize="18" TextColor="Black" Text="Интервал обновления поисков станет минимальным (10 секунд)" HorizontalOptions="Center" />
+                <StackLayout  Orientation="Horizontal">
+                    <Button Margin="30,0,0,20" HorizontalOptions="Start" BackgroundColor="#BAD8D7" Text="Закрыть" ContentLayout="Left,5" Clicked="ClosePopup_FastMode"></Button>
+                    <Button Margin="0,0,30,20" HorizontalOptions="EndAndExpand" BackgroundColor="#BAD8D7" Text="Активировать" ContentLayout="Left,5" Clicked="Activate_FastMode"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ContentView>
+
+    </AbsoluteLayout>
+</ContentPage>

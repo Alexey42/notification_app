@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="avito_parse.AddingPage">
+    <ContentPage.Content>
+        <ScrollView>
+        <Grid HorizontalOptions="Center" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="100" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Вставьте ссылку" FontSize="18" VerticalOptions="Start" Grid.ColumnSpan="2" />
+            <Entry x:Name="Url" BackgroundColor="AliceBlue" Placeholder="URL" Focused="UrlOnFocus" VerticalOptions="End" HeightRequest="50" Grid.ColumnSpan="2" />
+            <Label Text="Назовите поиск" FontSize="18" VerticalOptions="Start" Grid.Row="1" />
+            <Entry x:Name="Name" Text="" BackgroundColor="AliceBlue" Placeholder="Название (не обязательно)" VerticalOptions="End" HeightRequest="50" Grid.Row="1" Grid.ColumnSpan="2" />
+            <Label Text="Вид уведомлений:" FontSize="18" VerticalOptions="Start" Grid.Row="2" Grid.ColumnSpan="2" />
+            <Picker x:Name="picker" HeightRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" Grid.Row="2" Grid.ColumnSpan="2">
+                <Picker.Items>
+                    <x:String>Звук и вибрация</x:String>
+                    <x:String>Вибрация</x:String>
+                    <x:String>Только на экране</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="Рингтон" FontSize="18" HeightRequest="60" VerticalOptions="Center" Grid.Row="4" Grid.ColumnSpan="2" />
+            <Picker x:Name="picker2" HeightRequest="50" VerticalOptions="End" HorizontalOptions="StartAndExpand" Grid.Row="4" Grid.ColumnSpan="2">
+                <Picker.Items>
+                    <x:String>main</x:String>
+                    <x:String>point_blank</x:String>
+                    <x:String>to_the_point</x:String>
+                    <x:String>bird</x:String>
+                    <x:String>christmas</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button Text="Назад"
+                    VerticalOptions="CenterAndExpand" 
+                    Grid.Row="5" 
+                    Clicked="GoBack" />
+            <Button x:Name="add_button"
+                    Text="Добавить"
+                    VerticalOptions="CenterAndExpand" 
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Clicked="Add" />
+            <Image x:Name="loading" Source="loading.gif" IsAnimationPlaying="True" IsVisible="False" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="1"></Image>
+        </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
