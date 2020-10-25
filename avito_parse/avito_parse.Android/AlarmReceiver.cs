@@ -63,7 +63,8 @@ namespace avito_parse.Droid
                             x.Ads.Add(href);
                             if (!ad.Text().Contains("Сегодня")) continue;
 
-                            bool checkCity =
+                            bool checkCity = false;
+                            if (
                                 city.Contains("oblast") ||
                                 city.Contains("respublika") ||
                                 city.Contains("kray") ||
@@ -76,7 +77,8 @@ namespace avito_parse.Droid
                                 city.Contains("bashkortostan") ||
                                 city.Contains("saha") ||
                                 city.Contains("buryatiya") ||
-                                url.Contains("radius=");
+                                url.Contains("radius=")) checkCity = true;
+
                             if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;
 
                             x.NewAdsCount += 1;
@@ -174,10 +176,13 @@ namespace avito_parse.Droid
             client.Dispose();
             request.Dispose();
 
-            Intent alarmIntent = new Intent(Android.App.Application.Context, typeof(AlarmReceiver));
-            var pending = PendingIntent.GetBroadcast(context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
-            var alarmManager = Android.App.Application.Context.GetSystemService(Context.AlarmService).JavaCast<AlarmManager>();
-            alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                Intent alarmIntent = new Intent(Android.App.Application.Context, typeof(AlarmReceiver));
+                var pending = PendingIntent.GetBroadcast(context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
+                var alarmManager = Android.App.Application.Context.GetSystemService(Context.AlarmService).JavaCast<AlarmManager>();
+                alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
+            }
         }
 
         public static void SaveTrackingsList()
