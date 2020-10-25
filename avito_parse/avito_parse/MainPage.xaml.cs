@@ -250,9 +250,10 @@ namespace avito_parse
                                 x.Ads.Add(href);
                                 if (!ad.Text().Contains("Сегодня")) continue;
 
-                                bool checkCity =                                 
+                                bool checkCity = false;
+                                if (
                                     city.Contains("oblast") ||
-                                    city.Contains("respublika") ||                                   
+                                    city.Contains("respublika") ||
                                     city.Contains("kray") ||
                                     city.Contains("_ao") ||
                                     city.Contains("adygeya") ||
@@ -263,7 +264,8 @@ namespace avito_parse
                                     city.Contains("bashkortostan") ||
                                     city.Contains("saha") ||
                                     city.Contains("buryatiya") ||
-                                    url.Contains("radius=");
+                                    url.Contains("radius=")) checkCity = true;
+
                                 if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;
 
                                 x.NewAdsCount += 1;                             
