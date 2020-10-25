@@ -1,2 +1,4 @@
 avito_parse/*/bin
 avito_parse/*/obj
+.vs/*
+
