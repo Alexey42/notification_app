@@ -239,37 +239,14 @@ namespace avito_parse
 
                         foreach (var ad in temp)
                         {
+                            if (!ad.Text().Contains("Сегодня")) continue;
+
                             var item = ad.GetElementsByTagName("a")[0];
-                            var href = item.GetAttribute("href");
-                            var t = href.Remove(0, 1);
-                            var ti = t.IndexOf('/');
-                            string city = t.Remove(ti);
-                            
-                            if (!x.Ads.Contains(href))
+                            if (!x.Ads.Contains(item.GetAttribute("href")))
                             {
-                                x.Ads.Add(href);
-                                if (!ad.Text().Contains("Сегодня")) continue;
-
-                                bool checkCity = false;
-                                if (
-                                    city.Contains("oblast") ||
-                                    city.Contains("respublika") ||
-                                    city.Contains("kray") ||
-                                    city.Contains("_ao") ||
-                                    city.Contains("adygeya") ||
-                                    city.Contains("dagestan") ||
-                                    city.Contains("ingushetiya") ||
-                                    city.Contains("kabardino-balkariya") ||
-                                    city.Contains("kalmykiya") ||
-                                    city.Contains("bashkortostan") ||
-                                    city.Contains("saha") ||
-                                    city.Contains("buryatiya") ||
-                                    url.Contains("radius=")) checkCity = true;
-
-                                if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;
-
+                                x.Ads.Add(item.GetAttribute("href"));
                                 x.NewAdsCount += 1;                             
-                                x.UrlToNew = "https://m.avito.ru" + href;
+                                x.UrlToNew = "https://m.avito.ru" + item.GetAttribute("href");
                                 temp_UrlToNew = x.UrlToNew;
                                 temp_head = item.Text();
                                 temp_text = ad.QuerySelectorAll("div[itemprop='price']")[0].Text();
@@ -311,18 +288,18 @@ namespace avito_parse
                     } 
                 if (x.Site == "cian")
                     {
-                        var temp = doc.QuerySelectorAll("div[data-name='CardContainer']").ToList();
+                        var temp = doc.QuerySelectorAll(".c29edcec40--container--kceaZ").ToList();
                         foreach (var ad in temp)
                         {
-                            var href = ad.QuerySelector("div[data-name='LinkArea' a").GetAttribute("href");
-                            if (!x.Ads.Contains(href))
+                            var item = ad.GetElementsByClassName("c29edcec40--container--3jF-D")[0];
+                            if (!x.Ads.Contains(item.GetAttribute("href")))
                             {
-                                x.Ads.Add(href);
+                                x.Ads.Add(item.GetAttribute("href"));
                                 x.NewAdsCount += 1;
-                                x.UrlToNew = "https://cian.ru" + href;
+                                x.UrlToNew = "https://cian.ru" + item.GetAttribute("href");
                                 temp_UrlToNew = x.UrlToNew;
-                                temp_head = ad.QuerySelector("div[data-name='Features']").Text().Replace("&nbsp;", " ");
-                                temp_text = ad.QuerySelector("div[data-name='OfferHeader']").Text();
+                                temp_head = item.Text().Replace("&nbsp;", " ");
+                                temp_text = ad.GetElementsByClassName("c29edcec40--price--2nonH")[0].Text();
                             }
                         }
                     }
@@ -343,7 +320,7 @@ namespace avito_parse
                         }
                     }
 
-                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 8) && temp_head.Length > 0 && temp_text.Length > 0)
+                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 5) && temp_head.Length > 0 && temp_text.Length > 0)
                 {
                     Device.BeginInvokeOnMainThread(()=> {
                         x.Color = Color.FromHex("FFCD42");

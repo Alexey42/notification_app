@@ -26,12 +26,13 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.5.8": {
+      "MarcTron.Admob/1.4.5": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
-          "Xamarin.Google.iOS.MobileAds": "7.57.0"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Forms": "3.5.0.169047",
+          "Xamarin.Google.iOS.MobileAds": "7.47.0",
+          "Xamarin.Google.iOS.SignIn": "4.4.0"
         },
         "compile": {
           "lib/xamarinios10/Plugin.MtAdmob.dll": {}
@@ -289,6 +290,15 @@
           "lib/xamarinios10/_._": {}
         }
       },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -527,18 +537,19 @@
           "lib/xamarinios10/Plugin.Vibrate.dll": {}
         }
       },
-      "Xamarin.Build.Download/0.10.0": {
+      "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
-          "buildTransitive/Xamarin.Build.Download.props": {},
-          "buildTransitive/Xamarin.Build.Download.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Essentials/1.5.3.2": {
+      "Xamarin.Essentials/1.3.1": {
         "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
         "frameworkAssemblies": [
-          "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "OpenTK-1.0"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -547,10 +558,10 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Firebase.iOS.Core/6.6.6": {
+      "Xamarin.Firebase.iOS.Core/6.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0"
+          "Xamarin.Build.Download": "0.4.11"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -562,19 +573,21 @@
           "lib/xamarinios10/Firebase.Core.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1560": {
+      "Xamarin.Forms/4.3.0.908675": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "runtime": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "resource": {
@@ -641,8 +654,8 @@
           "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pl"
           },
-          "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll": {
-            "locale": "pt-BR"
+          "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll": {
+            "locale": "pt-br"
           },
           "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pt"
@@ -682,15 +695,15 @@
           }
         },
         "build": {
-          "buildTransitive/Xamarin.Forms.props": {},
-          "buildTransitive/Xamarin.Forms.targets": {}
+          "build/Xamarin.Forms.props": {},
+          "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Google.iOS.MobileAds/7.57.0": {
+      "Xamarin.Google.iOS.MobileAds/7.47.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Firebase.iOS.Core": "6.6.6"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "6.1.0"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -702,7 +715,23 @@
           "lib/xamarinios10/Google.MobileAds.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Google.iOS.MobileAds.targets": {}
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Google.iOS.SignIn/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "5.1.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "build": {
+          "build/_._": {}
         }
       },
       "avito_parse/1.0.0": {
@@ -710,11 +739,11 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AngleSharp": "0.14.0",
-          "MarcTron.Admob": "1.5.8",
+          "MarcTron.Admob": "1.5.7",
           "Microsoft.VisualStudio.Services.InteractiveClient": "16.153.0",
           "Xam.Plugins.Vibrate": "4.0.0.5",
-          "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1560"
+          "Xamarin.Essentials": "1.5.1",
+          "Xamarin.Forms": "4.5.0.495"
         },
         "compile": {
           "bin/placeholder/avito_parse.dll": {}
@@ -749,12 +778,13 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.5.8": {
+      "MarcTron.Admob/1.4.5": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
-          "Xamarin.Google.iOS.MobileAds": "7.57.0"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Forms": "3.5.0.169047",
+          "Xamarin.Google.iOS.MobileAds": "7.47.0",
+          "Xamarin.Google.iOS.SignIn": "4.4.0"
         },
         "compile": {
           "lib/xamarinios10/Plugin.MtAdmob.dll": {}
@@ -1002,6 +1032,15 @@
           "lib/xamarinios10/_._": {}
         }
       },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -1176,18 +1215,19 @@
           "lib/xamarinios10/Plugin.Vibrate.dll": {}
         }
       },
-      "Xamarin.Build.Download/0.10.0": {
+      "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
-          "buildTransitive/Xamarin.Build.Download.props": {},
-          "buildTransitive/Xamarin.Build.Download.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Essentials/1.5.3.2": {
+      "Xamarin.Essentials/1.3.1": {
         "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
         "frameworkAssemblies": [
-          "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "OpenTK-1.0"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -1196,10 +1236,10 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Firebase.iOS.Core/6.6.6": {
+      "Xamarin.Firebase.iOS.Core/6.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0"
+          "Xamarin.Build.Download": "0.4.11"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -1211,19 +1251,21 @@
           "lib/xamarinios10/Firebase.Core.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1560": {
+      "Xamarin.Forms/4.3.0.908675": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "runtime": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "resource": {
@@ -1290,8 +1332,8 @@
           "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pl"
           },
-          "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll": {
-            "locale": "pt-BR"
+          "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll": {
+            "locale": "pt-br"
           },
           "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pt"
@@ -1331,15 +1373,15 @@
           }
         },
         "build": {
-          "buildTransitive/Xamarin.Forms.props": {},
-          "buildTransitive/Xamarin.Forms.targets": {}
+          "build/Xamarin.Forms.props": {},
+          "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Google.iOS.MobileAds/7.57.0": {
+      "Xamarin.Google.iOS.MobileAds/7.47.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Firebase.iOS.Core": "6.6.6"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "6.1.0"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -1351,7 +1393,23 @@
           "lib/xamarinios10/Google.MobileAds.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Google.iOS.MobileAds.targets": {}
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Google.iOS.SignIn/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "5.1.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "build": {
+          "build/_._": {}
         }
       },
       "avito_parse/1.0.0": {
@@ -1359,11 +1417,11 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AngleSharp": "0.14.0",
-          "MarcTron.Admob": "1.5.8",
+          "MarcTron.Admob": "1.5.7",
           "Microsoft.VisualStudio.Services.InteractiveClient": "16.153.0",
           "Xam.Plugins.Vibrate": "4.0.0.5",
-          "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1560"
+          "Xamarin.Essentials": "1.5.1",
+          "Xamarin.Forms": "4.5.0.495"
         },
         "compile": {
           "bin/placeholder/avito_parse.dll": {}
@@ -1398,12 +1456,13 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.5.8": {
+      "MarcTron.Admob/1.4.5": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
-          "Xamarin.Google.iOS.MobileAds": "7.57.0"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Forms": "3.5.0.169047",
+          "Xamarin.Google.iOS.MobileAds": "7.47.0",
+          "Xamarin.Google.iOS.SignIn": "4.4.0"
         },
         "compile": {
           "lib/xamarinios10/Plugin.MtAdmob.dll": {}
@@ -1651,6 +1710,15 @@
           "lib/xamarinios10/_._": {}
         }
       },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -1825,18 +1893,19 @@
           "lib/xamarinios10/Plugin.Vibrate.dll": {}
         }
       },
-      "Xamarin.Build.Download/0.10.0": {
+      "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
-          "buildTransitive/Xamarin.Build.Download.props": {},
-          "buildTransitive/Xamarin.Build.Download.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Essentials/1.5.3.2": {
+      "Xamarin.Essentials/1.3.1": {
         "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
         "frameworkAssemblies": [
-          "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "OpenTK-1.0"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -1845,10 +1914,10 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Firebase.iOS.Core/6.6.6": {
+      "Xamarin.Firebase.iOS.Core/6.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0"
+          "Xamarin.Build.Download": "0.4.11"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -1860,19 +1929,21 @@
           "lib/xamarinios10/Firebase.Core.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1560": {
+      "Xamarin.Forms/4.3.0.908675": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "runtime": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "resource": {
@@ -1939,8 +2010,8 @@
           "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pl"
           },
-          "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll": {
-            "locale": "pt-BR"
+          "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll": {
+            "locale": "pt-br"
           },
           "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pt"
@@ -1980,15 +2051,15 @@
           }
         },
         "build": {
-          "buildTransitive/Xamarin.Forms.props": {},
-          "buildTransitive/Xamarin.Forms.targets": {}
+          "build/Xamarin.Forms.props": {},
+          "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Google.iOS.MobileAds/7.57.0": {
+      "Xamarin.Google.iOS.MobileAds/7.47.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Firebase.iOS.Core": "6.6.6"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "6.1.0"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -2000,7 +2071,23 @@
           "lib/xamarinios10/Google.MobileAds.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Google.iOS.MobileAds.targets": {}
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Google.iOS.SignIn/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "5.1.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "build": {
+          "build/_._": {}
         }
       },
       "avito_parse/1.0.0": {
@@ -2008,11 +2095,11 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AngleSharp": "0.14.0",
-          "MarcTron.Admob": "1.5.8",
+          "MarcTron.Admob": "1.5.7",
           "Microsoft.VisualStudio.Services.InteractiveClient": "16.153.0",
           "Xam.Plugins.Vibrate": "4.0.0.5",
-          "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1560"
+          "Xamarin.Essentials": "1.5.1",
+          "Xamarin.Forms": "4.5.0.495"
         },
         "compile": {
           "bin/placeholder/avito_parse.dll": {}
@@ -2047,12 +2134,13 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.5.8": {
+      "MarcTron.Admob/1.4.5": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
-          "Xamarin.Google.iOS.MobileAds": "7.57.0"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Forms": "3.5.0.169047",
+          "Xamarin.Google.iOS.MobileAds": "7.47.0",
+          "Xamarin.Google.iOS.SignIn": "4.4.0"
         },
         "compile": {
           "lib/xamarinios10/Plugin.MtAdmob.dll": {}
@@ -2300,6 +2388,15 @@
           "lib/xamarinios10/_._": {}
         }
       },
+      "System.Numerics.Vectors/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/xamarinios10/_._": {}
+        },
+        "runtime": {
+          "lib/xamarinios10/_._": {}
+        }
+      },
       "System.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -2474,18 +2571,19 @@
           "lib/xamarinios10/Plugin.Vibrate.dll": {}
         }
       },
-      "Xamarin.Build.Download/0.10.0": {
+      "Xamarin.Build.Download/0.4.11": {
         "type": "package",
         "build": {
-          "buildTransitive/Xamarin.Build.Download.props": {},
-          "buildTransitive/Xamarin.Build.Download.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Essentials/1.5.3.2": {
+      "Xamarin.Essentials/1.3.1": {
         "type": "package",
+        "dependencies": {
+          "System.Numerics.Vectors": "4.5.0"
+        },
         "frameworkAssemblies": [
-          "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "OpenTK-1.0"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -2494,10 +2592,10 @@
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
         }
       },
-      "Xamarin.Firebase.iOS.Core/6.6.6": {
+      "Xamarin.Firebase.iOS.Core/6.1.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0"
+          "Xamarin.Build.Download": "0.4.11"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -2509,19 +2607,21 @@
           "lib/xamarinios10/Firebase.Core.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
+          "build/_._": {}
         }
       },
-      "Xamarin.Forms/4.8.0.1560": {
+      "Xamarin.Forms/4.3.0.908675": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "runtime": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll": {},
+          "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll": {},
           "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll": {}
         },
         "resource": {
@@ -2588,8 +2688,8 @@
           "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pl"
           },
-          "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll": {
-            "locale": "pt-BR"
+          "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll": {
+            "locale": "pt-br"
           },
           "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll": {
             "locale": "pt"
@@ -2629,15 +2729,15 @@
           }
         },
         "build": {
-          "buildTransitive/Xamarin.Forms.props": {},
-          "buildTransitive/Xamarin.Forms.targets": {}
+          "build/Xamarin.Forms.props": {},
+          "build/Xamarin.Forms.targets": {}
         }
       },
-      "Xamarin.Google.iOS.MobileAds/7.57.0": {
+      "Xamarin.Google.iOS.MobileAds/7.47.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Firebase.iOS.Core": "6.6.6"
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "6.1.0"
         },
         "frameworkAssemblies": [
           "Xamarin.iOS"
@@ -2649,7 +2749,23 @@
           "lib/xamarinios10/Google.MobileAds.dll": {}
         },
         "build": {
-          "buildTransitive/Xamarin.Google.iOS.MobileAds.targets": {}
+          "build/_._": {}
+        }
+      },
+      "Xamarin.Google.iOS.SignIn/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Build.Download": "0.4.11",
+          "Xamarin.Firebase.iOS.Core": "5.1.8"
+        },
+        "compile": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "runtime": {
+          "lib/Xamarin.iOS10/Google.SignIn.dll": {}
+        },
+        "build": {
+          "build/_._": {}
         }
       },
       "avito_parse/1.0.0": {
@@ -2657,11 +2773,11 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AngleSharp": "0.14.0",
-          "MarcTron.Admob": "1.5.8",
+          "MarcTron.Admob": "1.5.7",
           "Microsoft.VisualStudio.Services.InteractiveClient": "16.153.0",
           "Xam.Plugins.Vibrate": "4.0.0.5",
-          "Xamarin.Essentials": "1.5.3.2",
-          "Xamarin.Forms": "4.8.0.1560"
+          "Xamarin.Essentials": "1.5.1",
+          "Xamarin.Forms": "4.5.0.495"
         },
         "compile": {
           "bin/placeholder/avito_parse.dll": {}
@@ -2723,21 +2839,27 @@
         "src/Ben.Demystifier/ValueTupleResolvedParameter.cs"
       ]
     },
-    "MarcTron.Admob/1.5.8": {
-      "sha512": "+umL/J+BYSuX72GpSIF43iS0YeqdbVm7eQ0NikGdjyovkwu/ZmceXKC6HsmfSkZPFbDIPWYhSoLEBAdkHtt1Tw==",
+    "MarcTron.Admob/1.4.5": {
+      "sha512": "w/fcPAyJBIGY/0QCDS50vv5fWHsJuqD5p/mOwhB3x/4srvxXtPVNcm3tt9ohvhqnWIdBKB1dXFRjzeoh18pgTw==",
       "type": "package",
-      "path": "marctron.admob/1.5.8",
+      "path": "marctron.admob/1.4.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/monoandroid81/Plugin.MtAdmob.dll",
+        "lib/monoandroid81/Plugin.MtAdmob.xml",
         "lib/monoandroid90/Plugin.MtAdmob.dll",
+        "lib/monoandroid90/Plugin.MtAdmob.xml",
         "lib/netstandard1.0/Plugin.MtAdmob.dll",
+        "lib/netstandard1.0/Plugin.MtAdmob.xml",
         "lib/netstandard2.0/Plugin.MtAdmob.dll",
-        "lib/uap10.0.18362/Plugin.MtAdmob.dll",
-        "lib/uap10.0.18362/Plugin.MtAdmob.pri",
+        "lib/netstandard2.0/Plugin.MtAdmob.xml",
+        "lib/uap10.0.16299/Plugin.MtAdmob.dll",
+        "lib/uap10.0.16299/Plugin.MtAdmob.pri",
+        "lib/uap10.0.16299/Plugin.MtAdmob.xml",
         "lib/xamarinios10/Plugin.MtAdmob.dll",
-        "marctron.admob.1.5.8.nupkg.sha512",
+        "lib/xamarinios10/Plugin.MtAdmob.xml",
+        "marctron.admob.1.4.5.nupkg.sha512",
         "marctron.admob.nuspec",
         "readme.txt"
       ]
@@ -3529,6 +3651,53 @@
         "ref/xamarinwatchos10/_._",
         "system.io.filesystem.4.3.0.nupkg.sha512",
         "system.io.filesystem.nuspec"
+      ]
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "sha512": "QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "type": "package",
+      "path": "system.numerics.vectors/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Numerics.Vectors.dll",
+        "lib/net46/System.Numerics.Vectors.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.0/System.Numerics.Vectors.dll",
+        "lib/netstandard1.0/System.Numerics.Vectors.xml",
+        "lib/netstandard2.0/System.Numerics.Vectors.dll",
+        "lib/netstandard2.0/System.Numerics.Vectors.xml",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.dll",
+        "lib/portable-net45+win8+wp8+wpa81/System.Numerics.Vectors.xml",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.Numerics.Vectors.dll",
+        "ref/net45/System.Numerics.Vectors.xml",
+        "ref/net46/System.Numerics.Vectors.dll",
+        "ref/net46/System.Numerics.Vectors.xml",
+        "ref/netcoreapp2.0/_._",
+        "ref/netstandard1.0/System.Numerics.Vectors.dll",
+        "ref/netstandard1.0/System.Numerics.Vectors.xml",
+        "ref/netstandard2.0/System.Numerics.Vectors.dll",
+        "ref/netstandard2.0/System.Numerics.Vectors.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.numerics.vectors.4.5.0.nupkg.sha512",
+        "system.numerics.vectors.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Reflection/4.3.0": {
@@ -4556,40 +4725,40 @@
         "xam.plugins.vibrate.nuspec"
       ]
     },
-    "Xamarin.Build.Download/0.10.0": {
-      "sha512": "XiQNxx6Jox00O80sJRlZv6jXDZ/r3KC7SMwzQNQcD1gZ+vsZyJH3LcSpdJ5NiZhRrWZlTGNSbooHsOBF7lBOyQ==",
+    "Xamarin.Build.Download/0.4.11": {
+      "sha512": "svGAoBnMVQwUbIv1+j7vDypY+2R7jruefJRmVsxhuvSFXMP8dV+yZK3UGuZa3zV5ThKimk9eqHuvRcl/JVipbA==",
       "type": "package",
-      "path": "xamarin.build.download/0.10.0",
+      "path": "xamarin.build.download/0.4.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "THIRD-PARTY-NOTICE.txt",
-        "build/Microsoft.Win32.Registry.dll",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/Mono.Cecil.dll",
         "build/Newtonsoft.Json.dll",
+        "build/System.Net.Http.Formatting.dll",
         "build/Xamarin.Build.Download.dll",
         "build/Xamarin.Build.Download.props",
         "build/Xamarin.Build.Download.targets",
-        "buildTransitive/Microsoft.Win32.Registry.dll",
-        "buildTransitive/Newtonsoft.Json.dll",
-        "buildTransitive/Xamarin.Build.Download.dll",
-        "buildTransitive/Xamarin.Build.Download.props",
-        "buildTransitive/Xamarin.Build.Download.targets",
-        "xamarin.build.download.0.10.0.nupkg.sha512",
+        "xamarin.build.download.0.4.11.nupkg.sha512",
         "xamarin.build.download.nuspec"
       ]
     },
-    "Xamarin.Essentials/1.5.3.2": {
-      "sha512": "BSLgDJUOPFRwTpQaftM+s4qb/MsTjrqXulEYDOcK6KF3i0Orf75zo3RwRfqnQ8WfpoEFxW/v0jgcPWCvOMgHxg==",
+    "Xamarin.Essentials/1.3.1": {
+      "sha512": "+51728AdZ/qtABGvcIaNXgEoL2jAtxAXLHS8PvGCP0pb6n7twBqYpfgkmwHYVgu+U99szgtL+Jot8L+OXorPcA==",
       "type": "package",
-      "path": "xamarin.essentials/1.5.3.2",
+      "path": "xamarin.essentials/1.3.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE",
-        "icon.png",
-        "lib/monoandroid10.0/Xamarin.Essentials.dll",
-        "lib/monoandroid10.0/Xamarin.Essentials.pdb",
-        "lib/monoandroid10.0/Xamarin.Essentials.xml",
+        "lib/monoandroid60/Xamarin.Essentials.dll",
+        "lib/monoandroid60/Xamarin.Essentials.pdb",
+        "lib/monoandroid60/Xamarin.Essentials.xml",
+        "lib/monoandroid70/Xamarin.Essentials.dll",
+        "lib/monoandroid70/Xamarin.Essentials.pdb",
+        "lib/monoandroid70/Xamarin.Essentials.xml",
+        "lib/monoandroid71/Xamarin.Essentials.dll",
+        "lib/monoandroid71/Xamarin.Essentials.pdb",
+        "lib/monoandroid71/Xamarin.Essentials.xml",
         "lib/monoandroid80/Xamarin.Essentials.dll",
         "lib/monoandroid80/Xamarin.Essentials.pdb",
         "lib/monoandroid80/Xamarin.Essentials.xml",
@@ -4622,42 +4791,32 @@
         "lib/xamarinwatchos10/Xamarin.Essentials.pdb",
         "lib/xamarinwatchos10/Xamarin.Essentials.xml",
         "readme.txt",
-        "xamarin.essentials.1.5.3.2.nupkg.sha512",
+        "xamarin.essentials.1.3.1.nupkg.sha512",
         "xamarin.essentials.nuspec"
       ]
     },
-    "Xamarin.Firebase.iOS.Core/6.6.6": {
-      "sha512": "GM43jhKOjzs2AwTNxPA3OFW/UVAM7oBWfYn0m9c56oOAAlPdpO7LebWXkLNa/vcFv9gtfCBrVVl+QIk8miwTDw==",
+    "Xamarin.Firebase.iOS.Core/6.1.0": {
+      "sha512": "fGJ4l+bAxKzjlbnEQwf2kfpExjABuG7+QbzNEP0lUOmIrCgIa2+ThdOUA05Q3vTxszUhHY2W67U8eYgjKwHsWA==",
       "type": "package",
-      "path": "xamarin.firebase.ios.core/6.6.6",
+      "path": "xamarin.firebase.ios.core/6.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "License.md",
         "THIRD-PARTY-NOTICES.txt",
         "build/Xamarin.Firebase.iOS.Core.targets",
-        "buildTransitive/Xamarin.Firebase.iOS.Core.targets",
-        "firebaseioscore_128x128.png",
         "lib/xamarinios10/Firebase.Core.dll",
-        "xamarin.firebase.ios.core.6.6.6.nupkg.sha512",
+        "xamarin.firebase.ios.core.6.1.0.nupkg.sha512",
         "xamarin.firebase.ios.core.nuspec"
       ]
     },
-    "Xamarin.Forms/4.8.0.1560": {
-      "sha512": "uWw6knrT26YOI+vZXB8YvYAEimycokY0qN58u++Rb7Y4tcWm/Fzn6UWaGaTCY1VppTXA1JrQMsb5vxBvoyYFhg==",
+    "Xamarin.Forms/4.3.0.908675": {
+      "sha512": "kXrbXKJvXYF4cKjs1Jsb+pQFEnFGl0AONYSeABjgOJqN/o5Y4zC0XXQ68xiUI81PKQTuRB5F3oDom2t5ccJDZw==",
       "type": "package",
-      "path": "xamarin.forms/4.8.0.1560",
+      "path": "xamarin.forms/4.3.0.908675",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Assets/xamarin_128x128.png",
         "build/MonoAndroid10/proguard.cfg",
-        "build/XCODE10/Xamarin.Forms.Platform.iOS.dll",
-        "build/XCODE10/Xamarin.Forms.Platform.iOS.pdb",
-        "build/XCODE10/Xamarin.Forms.Platform.macOS.dll",
-        "build/XCODE11/Xamarin.Forms.Platform.iOS.dll",
-        "build/XCODE11/Xamarin.Forms.Platform.iOS.pdb",
-        "build/XCODE11/Xamarin.Forms.Platform.macOS.dll",
         "build/Xamarin.Forms.DefaultItems.props",
         "build/Xamarin.Forms.DefaultItems.targets",
         "build/Xamarin.Forms.props",
@@ -4678,66 +4837,39 @@
         "build/netstandard2.0/Xamarin.Forms.Build.Tasks.dll",
         "build/netstandard2.0/Xamarin.Forms.Core.dll",
         "build/netstandard2.0/Xamarin.Forms.Xaml.dll",
-        "buildTransitive/MonoAndroid10/proguard.cfg",
-        "buildTransitive/XCODE10/Xamarin.Forms.Platform.iOS.dll",
-        "buildTransitive/XCODE10/Xamarin.Forms.Platform.iOS.pdb",
-        "buildTransitive/XCODE10/Xamarin.Forms.Platform.macOS.dll",
-        "buildTransitive/XCODE11/Xamarin.Forms.Platform.iOS.dll",
-        "buildTransitive/XCODE11/Xamarin.Forms.Platform.iOS.pdb",
-        "buildTransitive/XCODE11/Xamarin.Forms.Platform.macOS.dll",
-        "buildTransitive/Xamarin.Forms.DefaultItems.props",
-        "buildTransitive/Xamarin.Forms.DefaultItems.targets",
-        "buildTransitive/Xamarin.Forms.props",
-        "buildTransitive/Xamarin.Forms.targets",
-        "buildTransitive/net46/Mono.Cecil.Mdb.dll",
-        "buildTransitive/net46/Mono.Cecil.Pdb.dll",
-        "buildTransitive/net46/Mono.Cecil.Rocks.dll",
-        "buildTransitive/net46/Mono.Cecil.dll",
-        "buildTransitive/net46/System.ValueTuple.dll",
-        "buildTransitive/net46/Xamarin.Forms.Build.Tasks.dll",
-        "buildTransitive/net46/Xamarin.Forms.Core.dll",
-        "buildTransitive/net46/Xamarin.Forms.Xaml.dll",
-        "buildTransitive/netstandard2.0/Mono.Cecil.Mdb.dll",
-        "buildTransitive/netstandard2.0/Mono.Cecil.Pdb.dll",
-        "buildTransitive/netstandard2.0/Mono.Cecil.Rocks.dll",
-        "buildTransitive/netstandard2.0/Mono.Cecil.dll",
-        "buildTransitive/netstandard2.0/System.CodeDom.dll",
-        "buildTransitive/netstandard2.0/Xamarin.Forms.Build.Tasks.dll",
-        "buildTransitive/netstandard2.0/Xamarin.Forms.Core.dll",
-        "buildTransitive/netstandard2.0/Xamarin.Forms.Xaml.dll",
-        "lib/MonoAndroid10.0/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/MonoAndroid10.0/Design/Xamarin.Forms.Xaml.Design.dll",
-        "lib/MonoAndroid10.0/FormsViewGroup.dll",
-        "lib/MonoAndroid10.0/FormsViewGroup.pdb",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Core.dll",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Core.pdb",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Platform.Android.dll",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Platform.Android.pdb",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Platform.dll",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Xaml.dll",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Xaml.pdb",
-        "lib/MonoAndroid10.0/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/de/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/de/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/es/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/es/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/fr/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/fr/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/it/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/it/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/ja/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/ja/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/ko/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/ko/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/pt-BR/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/pt-BR/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/ru/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/ru/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/zh-Hans/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/zh-Hans/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid10.0/zh-Hant/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid10.0/zh-Hant/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/Design/Xamarin.Forms.Core.Design.dll",
+        "lib/MonoAndroid81/Design/Xamarin.Forms.Xaml.Design.dll",
+        "lib/MonoAndroid81/FormsViewGroup.dll",
+        "lib/MonoAndroid81/FormsViewGroup.pdb",
+        "lib/MonoAndroid81/Xamarin.Forms.Core.dll",
+        "lib/MonoAndroid81/Xamarin.Forms.Core.pdb",
+        "lib/MonoAndroid81/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/Xamarin.Forms.Platform.Android.dll",
+        "lib/MonoAndroid81/Xamarin.Forms.Platform.Android.pdb",
+        "lib/MonoAndroid81/Xamarin.Forms.Platform.dll",
+        "lib/MonoAndroid81/Xamarin.Forms.Xaml.dll",
+        "lib/MonoAndroid81/Xamarin.Forms.Xaml.pdb",
+        "lib/MonoAndroid81/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/de/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/de/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/es/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/es/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/fr/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/fr/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/it/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/it/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/ja/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/ja/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/ko/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/ko/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/pt-br/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/pt-br/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/ru/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/ru/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/zh-Hans/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/zh-Hans/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid81/zh-Hant/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid81/zh-Hant/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/Design/Xamarin.Forms.Core.Design.dll",
         "lib/MonoAndroid90/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/MonoAndroid90/FormsViewGroup.dll",
@@ -4763,8 +4895,8 @@
         "lib/MonoAndroid90/ja/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/ko/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid90/ko/Xamarin.Forms.Xaml.xml",
-        "lib/MonoAndroid90/pt-BR/Xamarin.Forms.Core.xml",
-        "lib/MonoAndroid90/pt-BR/Xamarin.Forms.Xaml.xml",
+        "lib/MonoAndroid90/pt-br/Xamarin.Forms.Core.xml",
+        "lib/MonoAndroid90/pt-br/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/ru/Xamarin.Forms.Core.xml",
         "lib/MonoAndroid90/ru/Xamarin.Forms.Xaml.xml",
         "lib/MonoAndroid90/zh-Hans/Xamarin.Forms.Core.xml",
@@ -4775,6 +4907,7 @@
         "lib/Xamarin.Mac/Design/Xamarin.Forms.Xaml.Design.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Core.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Platform.dll",
+        "lib/Xamarin.Mac/Xamarin.Forms.Platform.macOS.dll",
         "lib/Xamarin.Mac/Xamarin.Forms.Xaml.dll",
         "lib/Xamarin.iOS10/Design/Xamarin.Forms.Core.Design.dll",
         "lib/Xamarin.iOS10/Design/Xamarin.Forms.Xaml.Design.dll",
@@ -4782,6 +4915,8 @@
         "lib/Xamarin.iOS10/Xamarin.Forms.Core.pdb",
         "lib/Xamarin.iOS10/Xamarin.Forms.Core.xml",
         "lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll",
+        "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll",
+        "lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.pdb",
         "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll",
         "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.pdb",
         "lib/Xamarin.iOS10/Xamarin.Forms.Xaml.xml",
@@ -4818,9 +4953,9 @@
         "lib/Xamarin.iOS10/nb/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/nl/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/pl/Xamarin.Forms.Platform.iOS.resources.dll",
-        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Core.xml",
-        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Platform.iOS.resources.dll",
-        "lib/Xamarin.iOS10/pt-BR/Xamarin.Forms.Xaml.xml",
+        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Core.xml",
+        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Platform.iOS.resources.dll",
+        "lib/Xamarin.iOS10/pt-br/Xamarin.Forms.Xaml.xml",
         "lib/Xamarin.iOS10/pt/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/ro/Xamarin.Forms.Platform.iOS.resources.dll",
         "lib/Xamarin.iOS10/ru/Xamarin.Forms.Core.xml",
@@ -4869,8 +5004,8 @@
         "lib/netstandard2.0/ja/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/ko/Xamarin.Forms.Core.xml",
         "lib/netstandard2.0/ko/Xamarin.Forms.Xaml.xml",
-        "lib/netstandard2.0/pt-BR/Xamarin.Forms.Core.xml",
-        "lib/netstandard2.0/pt-BR/Xamarin.Forms.Xaml.xml",
+        "lib/netstandard2.0/pt-br/Xamarin.Forms.Core.xml",
+        "lib/netstandard2.0/pt-br/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/ru/Xamarin.Forms.Core.xml",
         "lib/netstandard2.0/ru/Xamarin.Forms.Xaml.xml",
         "lib/netstandard2.0/zh-Hans/Xamarin.Forms.Core.xml",
@@ -4888,92 +5023,65 @@
         "lib/tizen40/Xamarin.Forms.Xaml.dll",
         "lib/tizen40/Xamarin.Forms.Xaml.pdb",
         "lib/tizen40/Xamarin.Forms.Xaml.xml",
-        "lib/uap10.0.14393/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/uap10.0.14393/Design/Xamarin.Forms.Xaml.Design.dll",
-        "lib/uap10.0.14393/Properties/Xamarin.Forms.Platform.UAP.rd.xml",
-        "lib/uap10.0.14393/Xamarin.Forms.Core.dll",
-        "lib/uap10.0.14393/Xamarin.Forms.Core.pdb",
-        "lib/uap10.0.14393/Xamarin.Forms.Core.xml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP.dll",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP.pdb",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP.pri",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/CollectionView/ItemsViewStyles.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsAutoSuggestBoxStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsCheckBoxStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsCommandBarStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsEmbeddedPageWrapper.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsFlyout.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsProgressBarStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/FormsTextBoxStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/MasterDetailControlStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/DensityStyles/Compact.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Resources.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Shell/ShellPageWrapper.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/StepperControl.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Xamarin.Forms.Platform.UAP.xr.xml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.dll",
-        "lib/uap10.0.14393/Xamarin.Forms.Xaml.dll",
-        "lib/uap10.0.14393/Xamarin.Forms.Xaml.pdb",
-        "lib/uap10.0.14393/Xamarin.Forms.Xaml.xml",
-        "lib/uap10.0.16299/Design/Xamarin.Forms.Core.Design.dll",
-        "lib/uap10.0.16299/Design/Xamarin.Forms.Xaml.Design.dll",
-        "lib/uap10.0.16299/Properties/Xamarin.Forms.Platform.UAP.rd.xml",
-        "lib/uap10.0.16299/Xamarin.Forms.Core.dll",
-        "lib/uap10.0.16299/Xamarin.Forms.Core.pdb",
-        "lib/uap10.0.16299/Xamarin.Forms.Core.xml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP.dll",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP.pdb",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP.pri",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/CollectionView/ItemsViewStyles.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsAutoSuggestBoxStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsCheckBoxStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsCommandBarStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsEmbeddedPageWrapper.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsFlyout.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsProgressBarStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/FormsTextBoxStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/MasterDetailControlStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/DensityStyles/Compact.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Resources.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Shell/ShellPageWrapper.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/StepperControl.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xaml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Xamarin.Forms.Platform.UAP.xr.xml",
-        "lib/uap10.0.16299/Xamarin.Forms.Platform.dll",
-        "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
-        "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
-        "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.4.8.0.1560.nupkg.sha512",
+        "lib/uap10.0/Design/Xamarin.Forms.Core.Design.dll",
+        "lib/uap10.0/Design/Xamarin.Forms.Xaml.Design.dll",
+        "lib/uap10.0/Xamarin.Forms.Core.dll",
+        "lib/uap10.0/Xamarin.Forms.Core.pdb",
+        "lib/uap10.0/Xamarin.Forms.Core.xml",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP.dll",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP.pdb",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP.pri",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/AutoSuggestStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/CollectionView/ItemsViewStyles.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsCheckBoxStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsCommandBarStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsEmbeddedPageWrapper.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsFlyout.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsProgressBarStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/FormsTextBoxStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/MasterDetailControlStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/DensityStyles/Compact.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/PageControlStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/Properties/Xamarin.Forms.Platform.UAP.rd.xml",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/Resources.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/SliderStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/StepperControl.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xbf",
+        "lib/uap10.0/Xamarin.Forms.Platform.UAP/Xamarin.Forms.Platform.UAP.xr.xml",
+        "lib/uap10.0/Xamarin.Forms.Platform.dll",
+        "lib/uap10.0/Xamarin.Forms.Xaml.dll",
+        "lib/uap10.0/Xamarin.Forms.Xaml.pdb",
+        "lib/uap10.0/Xamarin.Forms.Xaml.xml",
+        "xamarin.forms.4.3.0.908675.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
-    "Xamarin.Google.iOS.MobileAds/7.57.0": {
-      "sha512": "e9hQr0/i8gy+wO4VssaQoIN8L5lgkN3UVzpN+NilgxhFZRbZncCaYyFW2NTvvb7r0QzTix4dZRhnSvBP3r8x5Q==",
+    "Xamarin.Google.iOS.MobileAds/7.47.0": {
+      "sha512": "L41PoZXnYAqcL3aA1YgL8NLMZZg168stKR0Cj5cfekOuDhfsgsSS2+2a/4SKbScovwzuhDhqq3LFCPbcFJ4c4Q==",
       "type": "package",
-      "path": "xamarin.google.ios.mobileads/7.57.0",
+      "path": "xamarin.google.ios.mobileads/7.47.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "License.md",
         "THIRD-PARTY-NOTICES.txt",
         "build/Xamarin.Google.iOS.MobileAds.targets",
-        "buildTransitive/Xamarin.Google.iOS.MobileAds.targets",
-        "googleiosmobileads_128x128.png",
         "lib/xamarinios10/Google.MobileAds.dll",
-        "xamarin.google.ios.mobileads.7.57.0.nupkg.sha512",
+        "xamarin.google.ios.mobileads.7.47.0.nupkg.sha512",
         "xamarin.google.ios.mobileads.nuspec"
+      ]
+    },
+    "Xamarin.Google.iOS.SignIn/4.4.0": {
+      "sha512": "ZmOub8GyEvrawHSdfg6b2ZBq6ACHcgA3lru2rBnfSJpF1L0JvtW+8oM6vbLslOnz0EvLMd1xlfBUjLR4EVgh/w==",
+      "type": "package",
+      "path": "xamarin.google.ios.signin/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Xamarin.Google.iOS.SignIn.targets",
+        "lib/Xamarin.iOS10/Google.SignIn.dll",
+        "xamarin.google.ios.signin.4.4.0.nupkg.sha512",
+        "xamarin.google.ios.signin.nuspec"
       ]
     },
     "avito_parse/1.0.0": {
@@ -4984,10 +5092,10 @@
   },
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
-      "MarcTron.Admob >= 1.5.8",
+      "MarcTron.Admob >= 1.4.5",
       "Xam.Plugins.Vibrate >= 4.0.0.5",
-      "Xamarin.Essentials >= 1.5.3.2",
-      "Xamarin.Forms >= 4.8.0.1560",
+      "Xamarin.Essentials >= 1.3.1",
+      "Xamarin.Forms >= 4.3.0.908675",
       "avito_parse >= 1.0.0"
     ]
   },
@@ -4998,11 +5106,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\55000\\source\\repos\\avito_parse\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
       "projectName": "avito_parse.iOS",
-      "projectPath": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
+      "projectPath": "C:\\Users\\55000\\source\\repos\\avito_parse\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
       "packagesPath": "C:\\Users\\55000\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse.iOS\\obj\\",
+      "outputPath": "C:\\Users\\55000\\source\\repos\\avito_parse\\avito_parse\\avito_parse.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -5023,8 +5131,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse\\avito_parse.csproj": {
-              "projectPath": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse\\avito_parse.csproj"
+            "C:\\Users\\55000\\source\\repos\\avito_parse\\avito_parse\\avito_parse\\avito_parse.csproj": {
+              "projectPath": "C:\\Users\\55000\\source\\repos\\avito_parse\\avito_parse\\avito_parse\\avito_parse.csproj"
             }
           }
         }
@@ -5035,7 +5143,7 @@
         "dependencies": {
           "MarcTron.Admob": {
             "target": "Package",
-            "version": "[1.5.8, )"
+            "version": "[1.4.5, )"
           },
           "Xam.Plugins.Vibrate": {
             "target": "Package",
@@ -5043,11 +5151,11 @@
           },
           "Xamarin.Essentials": {
             "target": "Package",
-            "version": "[1.5.3.2, )"
+            "version": "[1.3.1, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[4.8.0.1560, )"
+            "version": "[4.3.0.908675, )"
           }
         }
       }
@@ -5063,5 +5171,46 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Обнаружено понижение версии пакета MarcTron.Admob с 1.5.7 на 1.4.5. Чтобы выбрать другую версию, создайте ссылку на пакет напрямую из проекта. \r\n avito_parse.iOS -> avito_parse -> MarcTron.Admob (>= 1.5.7) \r\n avito_parse.iOS -> MarcTron.Admob (>= 1.4.5)",
+      "libraryId": "MarcTron.Admob",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Обнаружено понижение версии пакета Xamarin.Essentials с 1.5.1 на 1.3.1. Чтобы выбрать другую версию, создайте ссылку на пакет напрямую из проекта. \r\n avito_parse.iOS -> avito_parse -> Xamarin.Essentials (>= 1.5.1) \r\n avito_parse.iOS -> Xamarin.Essentials (>= 1.3.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Обнаружено понижение версии пакета Xamarin.Forms с 4.5.0.495 на 4.3.0.908675. Чтобы выбрать другую версию, создайте ссылку на пакет напрямую из проекта. \r\n avito_parse.iOS -> avito_parse -> Xamarin.Forms (>= 4.5.0.495) \r\n avito_parse.iOS -> Xamarin.Forms (>= 4.3.0.908675)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
 }

@@ -184,4 +184,3 @@ C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse.iOS\bin\iPhoneSi
 C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Firebase.Core.dll
 C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Google.MobileAds.dll
 C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Google.SignIn.dll
-C:\Users\55000\source\repos\avito_parse\avito_parse\avito_parse.iOS\obj\iPhoneSimulator\Debug\avito_parse.iOS.csproj.CoreCompileInputs.cache
