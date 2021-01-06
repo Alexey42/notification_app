@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -18,9 +9,9 @@ namespace avito_parse.Droid
     [Activity(Label = "ClickActivity", NoHistory = true)]
     public class ClickActivity : Activity
     {
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
             string notifyUrl = Intent.GetStringExtra("Url");
             Browser.OpenAsync(notifyUrl, BrowserLaunchMode.SystemPreferred);

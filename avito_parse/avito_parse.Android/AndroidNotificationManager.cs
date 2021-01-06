@@ -38,7 +38,9 @@ namespace avito_parse.Droid
             
             CreateNotificationChannel(mode, ring);
 
-            Intent intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
+            Intent intent;
+            if (ring == null) intent = new Intent(AndroidApp.Context, typeof(ClickReopenActivity));
+            else intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
             intent.PutExtra("Title", title);
             intent.PutExtra("Message", message);
             intent.PutExtra("Id", messageId);
