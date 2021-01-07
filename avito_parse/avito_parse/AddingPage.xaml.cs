@@ -259,7 +259,11 @@ namespace avito_parse
 
         public async void GoBack(object sender, System.EventArgs e)
         {
-            await Navigation.PopModalAsync();           
+            try
+            {
+                await Navigation.PopModalAsync();
+            }
+            catch { }
         }
     }
 }

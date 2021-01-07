@@ -2,7 +2,7 @@
 using Android.Content;
 using Android.Media;
 using Android.OS;
-using Android.Support.V4.App;
+using AndroidX.Core.App;
 using Plugin.Vibrate;
 using System;
 using Xamarin.Forms;

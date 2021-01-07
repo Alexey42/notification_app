@@ -37,3 +37,5 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
 [assembly: UsesPermission(Android.Manifest.Permission.WakeLock)]
 [assembly: UsesPermission(Android.Manifest.Permission.ForegroundService)]
+[assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage)]
+[assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]

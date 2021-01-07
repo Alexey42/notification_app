@@ -355,7 +355,9 @@ namespace avito_parse
                     string title = $"Новое объявление";
                     string message = $"{ temp_head } за { temp_text }";
                     notificationManager.ScheduleNotification(title, message, x.Notices, temp_UrlToNew, x.Ring);
-                    x.History.Insert(0, temp_UrlToNew);
+                    if (temp_UrlToNew.ToLower().Contains("https://")) 
+                        temp_UrlToNew = temp_UrlToNew.Substring(8, temp_UrlToNew.Length - 8);
+                    x.History.Insert(0, temp_UrlToNew.Replace("/", " "));
                     if (x.History.Count > 30) x.History.RemoveRange(x.History.Count - 3, 3);
                 }
 

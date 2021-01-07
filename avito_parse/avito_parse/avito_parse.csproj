@@ -41,7 +41,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="16.153.0" />
     <PackageReference Include="Xam.Plugins.Vibrate" Version="4.0.0.5" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
   </ItemGroup>
 
   <ItemGroup>

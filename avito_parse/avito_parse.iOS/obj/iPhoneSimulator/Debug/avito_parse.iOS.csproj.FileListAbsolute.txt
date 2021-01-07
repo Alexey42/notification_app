@@ -39,6 +39,8 @@ C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPh
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Core.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Core.pdb
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.dll
+C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.iOS.dll
+C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.iOS.pdb
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Xaml.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\ar\Xamarin.Forms.Platform.iOS.resources.dll
@@ -77,10 +79,8 @@ C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPh
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\zh-Hant\Xamarin.Forms.Platform.iOS.resources.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Google.MobileAds.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\avito_parse.dll
-C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.iOS.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Mono.Android.dll
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\avito_parse.pdb
-C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Xamarin.Forms.Platform.iOS.pdb
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Mono.Android.pdb
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\bin\iPhoneSimulator\Debug\Mono.Android.xml
 C:\Users\55000\source\repos\notification_app\avito_parse\avito_parse.iOS\obj\iPhoneSimulator\Debug\ibtool\_BundleResourceWithLogicalName.items

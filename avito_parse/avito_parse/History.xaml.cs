@@ -22,12 +22,17 @@ namespace avito_parse
         public void Browse(object sender, System.EventArgs e)
         {
             Button button = sender as Button;
-            Browser.OpenAsync(button.Text, BrowserLaunchMode.SystemPreferred);
+            string text = button.Text;
+            Browser.OpenAsync(text.Replace(" ", "/"), BrowserLaunchMode.SystemPreferred);
         }
         
         public async void GoBack(object sender, System.EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            try
+            {
+                await Navigation.PopModalAsync();
+            }
+            catch { }
         }
     }
 }

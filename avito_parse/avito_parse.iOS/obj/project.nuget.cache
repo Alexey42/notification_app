@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AV3QAWQ6hdETIdURxs/QMvSz/zGBtkYP9W/wm2be3Ktq7Swv/07yYPhw97SOfYWsal21MPK1Ms1uUiWgGwmS6A==",
+  "dgSpecHash": "TfSP3xzslqXemLufxdus+DbvdDZiKSiDmmF28AeYr1hprhWLdbBBM+N0NWb8DRdkX5aHx4EqdCHQlxhY4C366g==",
   "success": true,
   "projectFilePath": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,7 @@
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.essentials\\1.6.0\\xamarin.essentials.1.6.0.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.firebase.ios.core\\6.10.4\\xamarin.firebase.ios.core.6.10.4.nupkg.sha512",
-    "C:\\Users\\55000\\.nuget\\packages\\xamarin.forms\\4.8.0.1821\\xamarin.forms.4.8.0.1821.nupkg.sha512",
+    "C:\\Users\\55000\\.nuget\\packages\\xamarin.forms\\5.0.0.1874\\xamarin.forms.5.0.0.1874.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.google.ios.mobileads\\7.66.0\\xamarin.google.ios.mobileads.7.66.0.nupkg.sha512"
   ],
   "logs": []

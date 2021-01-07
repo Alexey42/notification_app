@@ -12,7 +12,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Button Text="{Binding}" Clicked="Browse" HeightRequest="70" BackgroundColor="#F0F0F0" Margin="0,5,0,0" />
+                                <Button Text="{Binding}" Clicked="Browse" HeightRequest="-1" BackgroundColor="#F0F0F0" Margin="0,5,0,0" />
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
