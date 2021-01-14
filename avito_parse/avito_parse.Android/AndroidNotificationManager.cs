@@ -35,6 +35,8 @@ namespace avito_parse.Droid
         {
             messageId++;
             channelId += mode.ToString();
+            if (mode != 0)
+                ring = null;
             
             CreateNotificationChannel(mode, ring);
 

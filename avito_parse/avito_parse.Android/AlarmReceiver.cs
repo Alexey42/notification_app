@@ -11,12 +11,12 @@ using AngleSharp.Html.Parser;
 using Xamarin.Forms;
 using Android.Runtime;
 using Android.OS;
-
+using System.Threading.Tasks;
 
 [assembly: Dependency(typeof(avito_parse.Droid.AndroidNotificationManager))]
 namespace avito_parse.Droid
 {
-    [BroadcastReceiver]
+    /*[BroadcastReceiver]
     public partial class AlarmReceiver : BroadcastReceiver
     {
         AndroidNotificationManager notificationManager = DependencyService.Get<AndroidNotificationManager>();
@@ -24,22 +24,30 @@ namespace avito_parse.Droid
 
         public override async void OnReceive(Context context, Intent intent)
         {
+                Parallel.ForEach(Trackings.list.ToArray(), (x) =>
+                {
+                    x.ResetToken();
+                    if (x.isActive) Checker(x, x.token, context);
+                });
+        }
+
+        public async Task Checker(Tracking x, CancellationToken cancellationToken, Context context)
+        {
             var client = new HttpClient();
             HttpResponseMessage request = new HttpResponseMessage();
-            
-            var path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read))
-            {
-                XmlSerializer formatter = new XmlSerializer(typeof(List<Tracking>));
-                try { Trackings.list = (List<Tracking>)formatter.Deserialize(fs); }
-                catch { }
-            }
 
-            foreach (var x in Trackings.list)
+            while (!cancellationToken.IsCancellationRequested)
             {
-                if (!x.isActive) continue;
+                if (!Trackings.list.FindAll((y) => x.Name == y.Name).Any() || Trackings.list.Find((y) => x.Name == y.Name).token.IsCancellationRequested) x.CancelToken();
+                else x = Trackings.list.Find((y) => x.Name == y.Name);
+
+                if (!x.isActive)
+                {
+                    await Task.Delay(60000, cancellationToken);
+                    continue;
+                }
                 var url = x.Url;
-                try { request = await client.GetAsync(url); } catch { continue; }
+                try { request = await client.GetAsync(url); } catch { await Task.Delay(Trackings.interval * 1000, cancellationToken); continue; }
                 var parser = new HtmlParser();
                 var response = await request.Content.ReadAsStringAsync();
                 var doc = parser.ParseDocument(response);
@@ -156,7 +164,7 @@ namespace avito_parse.Droid
                     }
                 }
 
-                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 10) && temp_head.Length > 0 && temp_text.Length > 0)
+                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 8) && temp_head.Length > 0 && temp_text.Length > 0)
                 {
                     string title = $"Новое объявление";
                     string message = $"{ temp_head } за { temp_text }";
@@ -171,8 +179,9 @@ namespace avito_parse.Droid
                     x.Ads.RemoveAll(item => item == null);
                 }
                 SaveTrackingsList();
+                await Task.Delay(Trackings.interval * 1000, cancellationToken);
             }
-          
+
             client.Dispose();
             request.Dispose();
 
@@ -183,8 +192,8 @@ namespace avito_parse.Droid
                 var alarmManager = Android.App.Application.Context.GetSystemService(Context.AlarmService).JavaCast<AlarmManager>();
                 alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
             }
-        }
 
+        }
         public static void SaveTrackingsList()
         {
             XmlSerializer formatter = new XmlSerializer(typeof(List<Tracking>));
@@ -206,5 +215,5 @@ namespace avito_parse.Droid
             }
         }
 
-    }
+    }*/
 }

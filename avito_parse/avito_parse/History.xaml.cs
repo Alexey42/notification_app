@@ -21,9 +21,8 @@ namespace avito_parse
 
         public void Browse(object sender, System.EventArgs e)
         {
-            Button button = sender as Button;
-            string text = button.Text;
-            Browser.OpenAsync(text.Replace(" ", "/"), BrowserLaunchMode.SystemPreferred);
+            Button button = sender as Button;          
+            Browser.OpenAsync(button.Text, BrowserLaunchMode.SystemPreferred);
         }
         
         public async void GoBack(object sender, System.EventArgs e)

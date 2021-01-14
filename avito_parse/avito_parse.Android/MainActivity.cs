@@ -47,13 +47,13 @@ namespace avito_parse.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.BindNotificationListenerService }, 0);
             }
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            /*if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
             {
                 Intent alarmIntent = new Intent(Application.Context, typeof(AlarmReceiver));
                 var pending = PendingIntent.GetBroadcast(this, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
                 var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
                 alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
-            }
+            }*/
             
             LoadApplication(new App(false));
         }
