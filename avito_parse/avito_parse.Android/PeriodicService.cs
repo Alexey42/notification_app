@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -23,7 +22,6 @@ namespace avito_parse
     {
         AndroidNotificationManager notificationManager = DependencyService.Get<AndroidNotificationManager>();
         static ReaderWriterLockSlim rwl1 = new ReaderWriterLockSlim();
-        static readonly string TAG = "X:" + typeof(PeriodicService).Name;
         Timer _timer;
         PowerManager powerManager;
         PowerManager.WakeLock wakeLock;

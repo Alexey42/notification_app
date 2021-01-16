@@ -5,6 +5,8 @@ using Android.OS;
 using AndroidX.Core.App;
 using Plugin.Vibrate;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using AndroidApp = Android.App.Application;
 
@@ -28,36 +30,42 @@ namespace avito_parse.Droid
 
         public void Initialize()
         {
-            
+
         }
 
         public int ScheduleNotification(string title, string message, int mode, string url, string ring)
         {
+            Task.Delay(1000).Wait();
+
+            bool isReopened = false;
+            if (ring == "reopened")
+                isReopened = true;
+
             messageId++;
             channelId += mode.ToString();
-            if (mode != 0)
+            if (mode != 0 || isReopened)
                 ring = null;
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)           
-                CreateNotificationChannel(mode, ring);
+            CreateNotificationChannel(mode, ring);
 
-            Intent intent;
-            intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
+            Intent intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
             intent.PutExtra("Title", title);
             intent.PutExtra("Message", message);
             intent.PutExtra("Id", messageId);
             intent.PutExtra("Url", url);
 
-            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, messageId, intent, PendingIntentFlags.OneShot);
-            
+            PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, messageId, intent, PendingIntentFlags.UpdateCurrent);
+
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
                 .SetAutoCancel(true)
                 .SetContentTitle(title)
                 .SetContentText(message)
                 .SetSmallIcon(Resource.Drawable.new_ad)
-                .SetPriority(NotificationCompat.PriorityMax)
                 .SetVisibility(NotificationCompat.VisibilityPublic);
+
+            if (!isReopened)
+                builder.SetPriority(NotificationCompat.PriorityMax);
 
             builder.SetSound(Android.Net.Uri.Parse("android.resource://" + Android.App.Application.Context.PackageName + "/raw/" + ring));
 
@@ -69,7 +77,7 @@ namespace avito_parse.Droid
                     builder.SetSound(Android.Net.Uri.Parse("android.resource://" + Android.App.Application.Context.PackageName + "/raw/" + ring));
                     var v = CrossVibrate.Current;
                     v.Vibration(TimeSpan.FromSeconds(0.5));
-                    builder.SetLights(unchecked((int)0xFFFFFFF0), 500, 1000);                  
+                    builder.SetLights(unchecked((int)0xFFFFFFF0), 500, 1000);
                 }
                 if (mode == 1)
                 {
@@ -87,7 +95,7 @@ namespace avito_parse.Droid
 
             var notification = builder.Build();
             manager.Notify(messageId, notification);
-            
+
             return messageId;
         }
 
@@ -101,7 +109,8 @@ namespace avito_parse.Droid
         {
             manager = (NotificationManager)AndroidApp.Context.GetSystemService(AndroidApp.NotificationService);
 
-            
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
                 var channelNameJava = new Java.Lang.String(channelName);
                 var channel = new NotificationChannel(channelId, channelNameJava, NotificationImportance.Default)
                 {
@@ -123,9 +132,8 @@ namespace avito_parse.Droid
                 {
                     channel.Importance = NotificationImportance.Max;
                     channel.SetSound(null, null);
-                    channel.EnableVibration(true);
                     var v = CrossVibrate.Current;
-                    v.Vibration(TimeSpan.FromSeconds(0.5));                    
+                    v.Vibration(TimeSpan.FromSeconds(0.5));
                     channel.EnableLights(true);
                 }
                 if (mode == 2)
@@ -135,7 +143,7 @@ namespace avito_parse.Droid
                 }
 
                 manager.CreateNotificationChannel(channel);
-
+            }
         }
 
     }
