@@ -77,10 +77,8 @@ namespace avito_parse
 
                 if (url.Contains("avito"))
                 {
-                    if (url.Substring(url.Length - 6) != "?s=104") // Сортировать по дате
-                    {
-                        url += "?s=104";
-                    }
+                    if (!url.Contains("&sort=date"))
+                        url += "&sort=date";
 
                     try
                     {

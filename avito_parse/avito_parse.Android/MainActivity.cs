@@ -1,5 +1,4 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
@@ -20,7 +19,6 @@ namespace avito_parse.Droid
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             TabLayoutResource = Resource.Layout.Tabbar;
-            //ToolbarResource = Resource.Layout.Toolbar;
             
             MobileAds.Initialize(ApplicationContext, "ca-app-pub-2209506349221532~9084833433");
             //CrossMTAdmob.Current.TestDevices.Add("CE800CFC9C8560368BA93B55926C0E14");
@@ -47,15 +45,15 @@ namespace avito_parse.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.BindNotificationListenerService }, 0);
             }
 
-            /*if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-            {
-                Intent alarmIntent = new Intent(Application.Context, typeof(AlarmReceiver));
-                var pending = PendingIntent.GetBroadcast(this, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
-                var alarmManager = GetSystemService(AlarmService).JavaCast<AlarmManager>();
-                alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
-            }*/
-            
-            LoadApplication(new App(false));
+            Trackings.interval = 60;
+            var intent = new Intent(this, typeof(PeriodicService));
+                    
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+                StartForegroundService(intent);
+            else
+                StartService(intent);
+
+            LoadApplication(new App());
         }
 
 

@@ -1,63 +1,131 @@
-﻿using System.Collections.Generic;
+﻿using Android.App;
+using Android.Content;
+using Android.OS;
+using AngleSharp.Dom;
+using AngleSharp.Html.Parser;
+using avito_parse.Droid;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
-using System.Xml.Serialization;
-using Android.App;
-using Android.Content;
-using AngleSharp.Dom;
-using AngleSharp.Html.Parser;
-using Xamarin.Forms;
-using Android.Runtime;
-using Android.OS;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(avito_parse.Droid.AndroidNotificationManager))]
-namespace avito_parse.Droid
+namespace avito_parse
 {
-    /*[BroadcastReceiver]
-    public partial class AlarmReceiver : BroadcastReceiver
+    [Service(Exported = true, Name = "com.avito_parse.PeriodicService")]
+    public class PeriodicService : Service
     {
         AndroidNotificationManager notificationManager = DependencyService.Get<AndroidNotificationManager>();
-        //static ReaderWriterLockSlim rwl1;
+        static ReaderWriterLockSlim rwl1 = new ReaderWriterLockSlim();
+        static readonly string TAG = "X:" + typeof(PeriodicService).Name;
+        Timer _timer;
+        PowerManager powerManager;
+        PowerManager.WakeLock wakeLock;
 
-        public override async void OnReceive(Context context, Intent intent)
+        public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-                Parallel.ForEach(Trackings.list.ToArray(), (x) =>
-                {
-                    x.ResetToken();
-                    if (x.isActive) Checker(x, x.token, context);
-                });
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                NotificationChannel chan = new NotificationChannel("9000", "Search", NotificationImportance.None);
+                const int NOTIFICATION_ID = 9000;
+                NotificationManager notificationManager = GetSystemService(NotificationService) as NotificationManager;
+                notificationManager.CreateNotificationChannel(chan);
+
+                PendingIntent pendingIntent = PendingIntent.GetActivity(this, NOTIFICATION_ID, new Intent(this, typeof(StopServiceActivity)), PendingIntentFlags.OneShot);
+                Notification.Action action = new Notification.Action(Resource.Drawable.new_ad, "Закрыть", pendingIntent);
+
+                var notification = new Notification.Builder(this)
+                    .SetChannelId(NOTIFICATION_ID.ToString())
+                    .SetActions(action)
+                    .SetOnlyAlertOnce(true)
+                    .SetContentTitle("Отслеживаем...")
+                    .SetContentText("не закрывайте если хотите получать уведомления")
+                    .SetSmallIcon(Resource.Drawable.service)
+                    .Build();
+
+                StartForeground(NOTIFICATION_ID, notification);
+            }
+
+            try
+            {
+                _timer = new Timer(o => {
+                    Checker();
+                }, null, 0, Trackings.interval * 1000);             
+
+                powerManager = (PowerManager)GetSystemService(PowerService);
+                wakeLock = powerManager.NewWakeLock(WakeLockFlags.Partial, "MyWakelockTag");
+                wakeLock.Acquire();
+
+                return StartCommandResult.RedeliverIntent;
+            }
+            catch (Exception ex)
+            {
+                StopService(new Intent(this, typeof(PeriodicService)));
+                return StartCommandResult.RedeliverIntent;
+            }
         }
 
-        public async Task Checker(Tracking x, CancellationToken cancellationToken, Context context)
+        public override void OnTaskRemoved(Intent rootIntent)
+        {
+            
+        }
+
+
+        public override void OnCreate()
+        {
+            base.OnCreate();
+        }
+
+        public override IBinder OnBind(Intent intent)
+        {
+            return null;
+        }
+
+        public override void OnDestroy()
+        {
+            try
+            {
+                base.OnDestroy();
+
+                _timer.Dispose();
+                _timer = null;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public async void Checker()
         {
             var client = new HttpClient();
             HttpResponseMessage request = new HttpResponseMessage();
-
-            while (!cancellationToken.IsCancellationRequested)
+            Parallel.ForEach(Trackings.list.ToArray(), async (x) =>
             {
                 if (!Trackings.list.FindAll((y) => x.Name == y.Name).Any() || Trackings.list.Find((y) => x.Name == y.Name).token.IsCancellationRequested) x.CancelToken();
                 else x = Trackings.list.Find((y) => x.Name == y.Name);
-
                 if (!x.isActive)
                 {
-                    await Task.Delay(60000, cancellationToken);
-                    continue;
+                    await Task.Delay(60000);
+                    return;
                 }
                 var url = x.Url;
-                try { request = await client.GetAsync(url); } catch { await Task.Delay(Trackings.interval * 1000, cancellationToken); continue; }
+                try { request = await client.GetAsync(url); } catch { await Task.Delay(Trackings.interval * 1000); return; }
                 var parser = new HtmlParser();
                 var response = await request.Content.ReadAsStringAsync();
                 var doc = parser.ParseDocument(response);
                 string temp_head = ""; string temp_text = ""; string temp_UrlToNew = ""; int prev_NewAdsCount = x.NewAdsCount;
-
                 if (x.Site == "avito")
                 {
                     var temp = doc.QuerySelectorAll("div[itemtype='http://schema.org/Product']").ToList();
                     temp.Reverse();
-
                     foreach (var ad in temp)
                     {
                         var item = ad.GetElementsByTagName("a")[0];
@@ -65,12 +133,10 @@ namespace avito_parse.Droid
                         var t = href.Remove(0, 1);
                         var ti = t.IndexOf('/');
                         string city = t.Remove(ti);
-
                         if (!x.Ads.Contains(href))
                         {
                             x.Ads.Add(href);
                             if (!ad.Text().Contains("Сегодня")) continue;
-
                             bool checkCity = false;
                             if (
                                 city.Contains("oblast") ||
@@ -86,9 +152,7 @@ namespace avito_parse.Droid
                                 city.Contains("saha") ||
                                 city.Contains("buryatiya") ||
                                 url.Contains("radius=")) checkCity = true;
-
                             if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;
-
                             x.NewAdsCount += 1;
                             x.UrlToNew = "https://m.avito.ru" + href;
                             temp_UrlToNew = x.UrlToNew;
@@ -163,7 +227,6 @@ namespace avito_parse.Droid
                         }
                     }
                 }
-
                 if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 8) && temp_head.Length > 0 && temp_text.Length > 0)
                 {
                     string title = $"Новое объявление";
@@ -172,35 +235,25 @@ namespace avito_parse.Droid
                     x.History.Insert(0, temp_UrlToNew);
                     if (x.History.Count > 30) x.History.RemoveRange(x.History.Count - 3, 3);
                 }
-
-                if (x.Ads.Count() > 200)
+                if (x.Ads.Count > 200)
                 {
                     x.Ads.RemoveRange(0, 90);
                     x.Ads.RemoveAll(item => item == null);
                 }
                 SaveTrackingsList();
-                await Task.Delay(Trackings.interval * 1000, cancellationToken);
-            }
+                await Task.Delay(Trackings.interval * 1000);
 
-            client.Dispose();
-            request.Dispose();
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-            {
-                Intent alarmIntent = new Intent(Android.App.Application.Context, typeof(AlarmReceiver));
-                var pending = PendingIntent.GetBroadcast(context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
-                var alarmManager = Android.App.Application.Context.GetSystemService(Context.AlarmService).JavaCast<AlarmManager>();
-                alarmManager.SetRepeating(AlarmType.RtcWakeup, SystemClock.ElapsedRealtime() + 5 * 1000, AlarmManager.IntervalFifteenMinutes, pending);
-            }
-
+                client.Dispose();
+                request.Dispose();
+            });
         }
+        
         public static void SaveTrackingsList()
         {
             XmlSerializer formatter = new XmlSerializer(typeof(List<Tracking>));
             string path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
             if (File.Exists(path)) File.Delete(path);
-
-            //rwl1.EnterWriteLock();
+            rwl1.EnterWriteLock();
             try
             {
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
@@ -211,9 +264,8 @@ namespace avito_parse.Droid
             }
             finally
             {
-                //rwl1.ExitWriteLock();
+                rwl1.ExitWriteLock();
             }
         }
-
-    }*/
+    }
 }

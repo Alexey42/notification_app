@@ -7,9 +7,9 @@ namespace avito_parse
 {
     public partial class App : Application
     {      
-        public App(bool app_already_exist)
+        public App()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             Trackings.Init();
             var path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read))
@@ -26,13 +26,10 @@ namespace avito_parse
                 catch { }
             }
 
-            if (!App.Current.Properties.ContainsKey("app_already_exist")) App.Current.Properties.Add("app_already_exist", false);
-            if (app_already_exist) App.Current.Properties["app_already_exist"] = true;
-            else App.Current.Properties["app_already_exist"] = false;
-
             path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
             if (!File.Exists(path)) MainPage = new NavigationPage(new Tutorial());
             else MainPage = new NavigationPage(new MainPage());
+
         }
 
         protected override void OnStart()

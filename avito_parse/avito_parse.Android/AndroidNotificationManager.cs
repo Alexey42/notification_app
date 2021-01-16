@@ -37,12 +37,12 @@ namespace avito_parse.Droid
             channelId += mode.ToString();
             if (mode != 0)
                 ring = null;
-            
-            CreateNotificationChannel(mode, ring);
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)           
+                CreateNotificationChannel(mode, ring);
 
             Intent intent;
-            if (ring == null) intent = new Intent(AndroidApp.Context, typeof(ClickReopenActivity));
-            else intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
+            intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
             intent.PutExtra("Title", title);
             intent.PutExtra("Message", message);
             intent.PutExtra("Id", messageId);
@@ -101,8 +101,7 @@ namespace avito_parse.Droid
         {
             manager = (NotificationManager)AndroidApp.Context.GetSystemService(AndroidApp.NotificationService);
 
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-            {
+            
                 var channelNameJava = new Java.Lang.String(channelName);
                 var channel = new NotificationChannel(channelId, channelNameJava, NotificationImportance.Default)
                 {
@@ -124,8 +123,9 @@ namespace avito_parse.Droid
                 {
                     channel.Importance = NotificationImportance.Max;
                     channel.SetSound(null, null);
+                    channel.EnableVibration(true);
                     var v = CrossVibrate.Current;
-                    v.Vibration(TimeSpan.FromSeconds(0.5));
+                    v.Vibration(TimeSpan.FromSeconds(0.5));                    
                     channel.EnableLights(true);
                 }
                 if (mode == 2)
@@ -135,7 +135,6 @@ namespace avito_parse.Droid
                 }
 
                 manager.CreateNotificationChannel(channel);
-            }
 
         }
 
