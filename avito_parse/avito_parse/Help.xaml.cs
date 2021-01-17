@@ -23,14 +23,14 @@ namespace avito_parse
         {           
             Button action = sender as Button;
             string instruction = "";
-            if (Build.VERSION.SdkInt == BuildVersionCodes.N || Build.VERSION.SdkInt == BuildVersionCodes.NMr1 || Build.VERSION.SdkInt == BuildVersionCodes.M)
-            {
-                instruction = "Настройки -> Все приложения -> Checker -> Уведомления";
-            }
-            else
-            {
+            //if (Build.VERSION.SdkInt == 24 || Build.VERSION.SdkInt == 25 || Build.VERSION.SdkInt == BuildVersionCodes.M)
+            //{
+               // instruction = "Настройки -> Все приложения -> Checker -> Уведомления";
+            //}
+            //else
+            //{
                 instruction = "Настройки -> Приложения и уведомления -> Уведомления объявлений -> Разрешите уведомления";
-            }
+            //}
 
             switch (action.ClassId)
             {

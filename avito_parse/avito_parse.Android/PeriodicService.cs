@@ -74,7 +74,6 @@ namespace avito_parse
             
         }
 
-
         public override void OnCreate()
         {
             base.OnCreate();
@@ -115,7 +114,12 @@ namespace avito_parse
                     return;
                 }
                 var url = x.Url;
-                try { request = await client.GetAsync(url); } catch { await Task.Delay(Trackings.interval * 1000); return; }
+                try { 
+                    request = await client.GetAsync(url); 
+                } catch { 
+                    await Task.Delay(Trackings.interval * 1000); 
+                    return; 
+                }
                 var parser = new HtmlParser();
                 var response = await request.Content.ReadAsStringAsync();
                 var doc = parser.ParseDocument(response);
@@ -246,7 +250,7 @@ namespace avito_parse
             });
         }
         
-        public static void SaveTrackingsList()
+        public void SaveTrackingsList()
         {
             XmlSerializer formatter = new XmlSerializer(typeof(List<Tracking>));
             string path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
