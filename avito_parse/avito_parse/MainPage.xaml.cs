@@ -1,15 +1,10 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xamarin.Forms;
-using AngleSharp.Html.Parser;
-using AngleSharp.Dom;
 using System.Threading;
-using System.Net.Http;
 using Xamarin.Essentials;
 
 //ca-app-pub-2209506349221532~9084833433  MainActivity, MainPage, Manifest

@@ -11,23 +11,27 @@ namespace avito_parse
         {
             InitializeComponent(); 
             Trackings.Init();
+            bool firstLaunch = false;
             var path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read))
             {
                 XmlSerializer formatter = new XmlSerializer(typeof(List<Tracking>));
                 try { Trackings.list = (List<Tracking>) formatter.Deserialize(fs); }
-                catch { }
+                catch {
+                    firstLaunch = true;
+                }
             }
             path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedInterval.xml");
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read))
             {
                 XmlSerializer formatter = new XmlSerializer(typeof(double));
                 try { Trackings.interval = (int) formatter.Deserialize(fs); }
-                catch { }
+                catch {
+                    firstLaunch = true;
+                }
             }
 
-            path = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "SavedData.xml");
-            if (!File.Exists(path)) MainPage = new NavigationPage(new Tutorial());
+            if (firstLaunch) MainPage = new NavigationPage(new Tutorial());
             else MainPage = new NavigationPage(new MainPage());
 
         }

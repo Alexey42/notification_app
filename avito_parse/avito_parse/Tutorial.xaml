@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:avito_parse;assembly=avito_parse"
              x:Class="avito_parse.Tutorial">
+
     <TabbedPage.Children>
         <local:TutPage1 x:Name="p1" Appearing="p1App" />
         <local:TutPage2 x:Name="p2" Appearing="p2App" />
