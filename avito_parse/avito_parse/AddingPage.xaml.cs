@@ -67,6 +67,9 @@ namespace avito_parse
                 var parser = new HtmlParser();
                 var response = await request.Content.ReadAsStringAsync();
                 doc = parser.ParseDocument(response);
+
+                client.Dispose();
+                request.Dispose();
             }
             var _site = "";
             var _name = "";

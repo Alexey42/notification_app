@@ -16,7 +16,7 @@ namespace avito_parse.Droid
             string notifyUrl = Intent.GetStringExtra("Url");
             Browser.OpenAsync(notifyUrl, BrowserLaunchMode.SystemPreferred);
            
-            INotificationManager notificationManager = DependencyService.Get<INotificationManager>();
+            INotificationManager notificationManager = DependencyService.Get<AndroidNotificationManager>();
             notificationManager.ScheduleNotification(Intent.GetStringExtra("Title"),
                 Intent.GetStringExtra("Message"), 2, notifyUrl, "reopened");
 

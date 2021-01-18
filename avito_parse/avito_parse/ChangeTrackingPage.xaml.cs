@@ -57,6 +57,7 @@ namespace avito_parse
             var _name = Name.Text;
             if (cur.Url != Url.Text)
             {
+                AngleSharp.Html.Dom.IHtmlDocument doc;
                 _history = new List<string>();
                 var client = new HttpClient();
                 HttpResponseMessage request = new HttpResponseMessage();
@@ -71,7 +72,7 @@ namespace avito_parse
                 request = await client.GetAsync(url);
                 var parser = new HtmlParser();
                 var response = await request.Content.ReadAsStringAsync();
-                var doc = parser.ParseDocument(response);
+                doc = parser.ParseDocument(response);
                 
                 _ads = new List<string>();
 
@@ -218,6 +219,9 @@ namespace avito_parse
                     loading.IsVisible = false;
                     return;
                 }
+
+                client.Dispose();
+                request.Dispose();
             }
 
             Trackings.list.Remove(cur);
