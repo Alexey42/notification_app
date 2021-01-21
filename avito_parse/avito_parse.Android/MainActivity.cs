@@ -64,5 +64,10 @@ namespace avito_parse.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Dispose();
+        }
     }
 }

@@ -5,7 +5,6 @@ using Android.OS;
 using AndroidX.Core.App;
 using Plugin.Vibrate;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using AndroidApp = Android.App.Application;

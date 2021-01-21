@@ -139,7 +139,7 @@ namespace avito_parse
                         {
                             x.Ads.Add(href);
                             if (!ad.Text().Contains("Сегодня")) continue;
-                            bool checkCity = false;
+                            /*bool checkCity = false;
                             if (
                                 city.Contains("oblast") ||
                                 city.Contains("respublika") ||
@@ -154,7 +154,7 @@ namespace avito_parse
                                 city.Contains("saha") ||
                                 city.Contains("buryatiya") ||
                                 url.Contains("radius=")) checkCity = true;
-                            if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;
+                            if (!url.Contains(city) && city != "rossiya" && !checkCity) continue;*/
                             x.NewAdsCount += 1;
                             x.UrlToNew = "https://m.avito.ru" + href;
                             temp_UrlToNew = x.UrlToNew;
@@ -229,7 +229,7 @@ namespace avito_parse
                         }
                     }
                 }
-                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 8) && temp_head.Length > 0 && temp_text.Length > 0)
+                if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 10) && temp_head.Length > 0 && temp_text.Length > 0)
                 {
                     string title = $"Новое объявление";
                     string message = $"{ temp_head } за { temp_text }";

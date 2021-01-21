@@ -22,5 +22,11 @@ namespace avito_parse.Droid
 
             Finish();
         }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            Dispose();
+        }
     }
 }

@@ -26,10 +26,9 @@ namespace avito_parse.Droid
             startupWork.Start();
         }
 
-        // Simulates background work that happens behind the splash screen
         async void SimulateStartup()
         { 
-            await Task.Delay(500); 
+            await Task.Delay(300); 
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 
