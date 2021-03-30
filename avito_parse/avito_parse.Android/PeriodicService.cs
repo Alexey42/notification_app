@@ -1,14 +1,13 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using AngleSharp;
 using AngleSharp.Dom;
-using AngleSharp.Html.Parser;
 using avito_parse.Droid;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -101,9 +100,8 @@ namespace avito_parse
         }
 
         public async void Checker()
-        {
-            var client = new HttpClient();
-            HttpResponseMessage request = new HttpResponseMessage();
+        {                     
+            
             Parallel.ForEach(Trackings.list.ToArray(), async (x) =>
             {
                 if (!Trackings.list.FindAll((y) => x.Name == y.Name).Any() || Trackings.list.Find((y) => x.Name == y.Name).token.IsCancellationRequested) x.CancelToken();
@@ -113,32 +111,38 @@ namespace avito_parse
                     await Task.Delay(60000);
                     return;
                 }
+                var location = "";
                 var url = x.Url;
-                try { 
-                    request = await client.GetAsync(url); 
+                IConfiguration config;               
+                try {
+                    config = Configuration.Default.WithDefaultLoader(); 
                 } catch { 
                     await Task.Delay(Trackings.interval * 1000); 
                     return; 
                 }
-                var parser = new HtmlParser();
-                var response = await request.Content.ReadAsStringAsync();
-                var doc = parser.ParseDocument(response);
-                string temp_head = ""; string temp_text = ""; string temp_UrlToNew = ""; int prev_NewAdsCount = x.NewAdsCount;
+                var doc = await BrowsingContext.New(config).OpenAsync(url);
+                string temp_head = ""; string temp_text = ""; string temp_UrlToNew = ""; int prev_NewAdsCount = x.NewAdsCount; string temp_site = "";
                 if (x.Site == "avito")
                 {
+                    temp_site = "Авито";
                     var temp = doc.QuerySelectorAll("div[itemtype='http://schema.org/Product']").ToList();
                     temp.Reverse();
                     foreach (var ad in temp)
                     {
                         var item = ad.GetElementsByTagName("a")[0];
                         var href = item.GetAttribute("href");
+                        var subdoc = await BrowsingContext.New(config).OpenAsync("https://m.avito.ru" + href);
+                        var date = subdoc.QuerySelector(".ehDCt").Text();
+                        location = SubstringBetween(subdoc.QuerySelector("span[data-marker='delivery/location']").Text(), ",", ",");
+
+                        subdoc.Dispose();
                         var t = href.Remove(0, 1);
                         var ti = t.IndexOf('/');
                         string city = t.Remove(ti);
                         if (!x.Ads.Contains(href))
                         {
                             x.Ads.Add(href);
-                            if (!ad.Text().Contains("Сегодня")) continue;
+                            if (!date.Contains("Сегодня")) continue;
                             /*bool checkCity = false;
                             if (
                                 city.Contains("oblast") ||
@@ -165,6 +169,7 @@ namespace avito_parse
                 }
                 if (x.Site == "auto.youla")
                 {
+                    temp_site = "Юла";
                     var temp = doc.QuerySelectorAll(".SerpSnippet_data__3ezjY").ToList();
                     foreach (var ad in temp)
                     {
@@ -182,6 +187,7 @@ namespace avito_parse
                 }
                 if (x.Site == "youla")
                 {
+                    temp_site = "Юла";
                     var temp = doc.QuerySelectorAll(".product_item a").ToList();
                     foreach (var ad in temp)
                     {
@@ -198,6 +204,7 @@ namespace avito_parse
                 }
                 if (x.Site == "cian")
                 {
+                    temp_site = "Циан";
                     var temp = doc.QuerySelectorAll("div[data-name='CardContainer']").ToList();
                     foreach (var ad in temp)
                     {
@@ -215,6 +222,7 @@ namespace avito_parse
                 }
                 if (x.Site == "drom")
                 {
+                    temp_site = "Дром";
                     var temp = doc.QuerySelectorAll("a.b-advItem").ToList();
                     foreach (var ad in temp)
                     {
@@ -232,10 +240,19 @@ namespace avito_parse
                 if (x.NewAdsCount > 0 && (x.NewAdsCount - prev_NewAdsCount < 10) && temp_head.Length > 0 && temp_text.Length > 0)
                 {
                     string title = $"Новое объявление";
-                    string message = $"{ temp_head } за { temp_text }";
-                    notificationManager.ScheduleNotification(title, message, x.Notices, temp_UrlToNew, x.Ring);
+                    if (!x.Name.Contains("Новый поиск"))
+                        title = $"{ x.Name }";
+
+                    string message = $"{ temp_head } за { temp_text } ";                   
+                    if (x.NewAdsCount - prev_NewAdsCount > 1)
+                        message += $"и ещё { x.NewAdsCount - prev_NewAdsCount - 1 }";
+
+                    string message2 = $"{ temp_site }";
+
+                    notificationManager.ScheduleNotification(title, message, message2, x.Notices, temp_UrlToNew, x.Ring);
                     x.History.Insert(0, temp_UrlToNew);
-                    if (x.History.Count > 30) x.History.RemoveRange(x.History.Count - 3, 3);
+                    if (x.History.Count > 30) 
+                        x.History.RemoveRange(x.History.Count - 3, 3);
                 }
                 if (x.Ads.Count > 200)
                 {
@@ -245,8 +262,7 @@ namespace avito_parse
                 SaveTrackingsList();
                 await Task.Delay(Trackings.interval * 1000);
 
-                client.Dispose();
-                request.Dispose();
+                doc.Dispose();
             });
         }
         
@@ -269,5 +285,17 @@ namespace avito_parse
                 rwl1.ExitWriteLock();
             }
         }
+
+        public string SubstringBetween(string str, string from, string to)
+        {
+            int pFrom = str.IndexOf(from);
+            string temp = str.Substring(pFrom + 1);
+            int pTo = temp.IndexOf(to);
+
+            if (pTo - pFrom < 1)
+                return "";
+            else
+                return temp.Substring(pFrom, pTo - pFrom);
+        } 
     }
 }

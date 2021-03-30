@@ -1,4 +1,5 @@
-﻿using AngleSharp.Html.Parser;
+﻿using AngleSharp;
+using AngleSharp.Html.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,11 +58,12 @@ namespace avito_parse
             var _name = Name.Text;
             if (cur.Url != Url.Text)
             {
-                AngleSharp.Html.Dom.IHtmlDocument doc;
+                IConfiguration config;
                 _history = new List<string>();
                 var client = new HttpClient();
-                HttpResponseMessage request = new HttpResponseMessage();
-                try { request = await client.GetAsync(url); }
+                try { 
+                    config = Configuration.Default.WithDefaultLoader();
+                }
                 catch
                 {
                     Url.BackgroundColor = Color.FromHex("#FA9081");
@@ -69,10 +71,8 @@ namespace avito_parse
                     loading.IsVisible = false;
                     return;
                 }
-                request = await client.GetAsync(url);
-                var parser = new HtmlParser();
-                var response = await request.Content.ReadAsStringAsync();
-                doc = parser.ParseDocument(response);
+
+                var doc = await BrowsingContext.New(config).OpenAsync(url);
                 
                 _ads = new List<string>();
 
@@ -220,8 +220,7 @@ namespace avito_parse
                     return;
                 }
 
-                client.Dispose();
-                request.Dispose();
+                doc.Dispose();
             }
 
             Trackings.list.Remove(cur);

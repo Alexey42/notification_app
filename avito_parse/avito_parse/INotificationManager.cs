@@ -10,7 +10,7 @@ namespace avito_parse
 
         void Initialize();
 
-        int ScheduleNotification(string title, string message, int mode, string url, string ring);
+        int ScheduleNotification(string title, string message, string message2, int mode, string url, string ring);
 
         void ReceiveNotification(string title, string message);
     }

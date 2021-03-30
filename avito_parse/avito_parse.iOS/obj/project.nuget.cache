@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "TfSP3xzslqXemLufxdus+DbvdDZiKSiDmmF28AeYr1hprhWLdbBBM+N0NWb8DRdkX5aHx4EqdCHQlxhY4C366g==",
+  "dgSpecHash": "BN7gKMv4eKtEAb2/gFF5opJJtHHHZN2ZrwCwrg6jnGZd4Xb+cdu1/E8untj+x9+oqlDglXGqfXCCUKZzCTo5NQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\55000\\source\\repos\\notification_app\\avito_parse\\avito_parse.iOS\\avito_parse.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\55000\\.nuget\\packages\\anglesharp\\0.14.0\\anglesharp.0.14.0.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\ben.demystifier\\0.1.2\\ben.demystifier.0.1.2.nupkg.sha512",
-    "C:\\Users\\55000\\.nuget\\packages\\marctron.admob\\1.6.0\\marctron.admob.1.6.0.nupkg.sha512",
+    "C:\\Users\\55000\\.nuget\\packages\\marctron.admob\\1.6.1\\marctron.admob.1.6.1.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.4\\microsoft.aspnet.webapi.client.5.2.4.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\microsoft.identitymodel.clients.activedirectory\\3.19.4\\microsoft.identitymodel.clients.activedirectory.3.19.4.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\5.2.4\\microsoft.identitymodel.jsonwebtokens.5.2.4.nupkg.sha512",
@@ -47,9 +47,9 @@
     "C:\\Users\\55000\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xam.plugins.vibrate\\4.0.0.5\\xam.plugins.vibrate.4.0.0.5.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.build.download\\0.10.0\\xamarin.build.download.0.10.0.nupkg.sha512",
-    "C:\\Users\\55000\\.nuget\\packages\\xamarin.essentials\\1.6.0\\xamarin.essentials.1.6.0.nupkg.sha512",
+    "C:\\Users\\55000\\.nuget\\packages\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.firebase.ios.core\\6.10.4\\xamarin.firebase.ios.core.6.10.4.nupkg.sha512",
-    "C:\\Users\\55000\\.nuget\\packages\\xamarin.forms\\5.0.0.1874\\xamarin.forms.5.0.0.1874.nupkg.sha512",
+    "C:\\Users\\55000\\.nuget\\packages\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
     "C:\\Users\\55000\\.nuget\\packages\\xamarin.google.ios.mobileads\\7.66.0\\xamarin.google.ios.mobileads.7.66.0.nupkg.sha512"
   ],
   "logs": []

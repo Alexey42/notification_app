@@ -32,7 +32,7 @@ namespace avito_parse.Droid
 
         }
 
-        public int ScheduleNotification(string title, string message, int mode, string url, string ring)
+        public int ScheduleNotification(string title, string message, string message2, int mode, string url, string ring)
         {
             Task.Delay(1000).Wait();
 
@@ -50,21 +50,21 @@ namespace avito_parse.Droid
             Intent intent = new Intent(AndroidApp.Context, typeof(ClickActivity));
             intent.PutExtra("Title", title);
             intent.PutExtra("Message", message);
+            intent.PutExtra("Message2", message2);
             intent.PutExtra("Id", messageId);
             intent.PutExtra("Url", url);
-
+            
             PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, messageId, intent, PendingIntentFlags.UpdateCurrent);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
                 .SetAutoCancel(true)
                 .SetContentTitle(title)
-                .SetContentText(message)
-                .SetSmallIcon(Resource.Drawable.new_ad)
-                .SetVisibility(NotificationCompat.VisibilityPublic);
+                .SetSubText(message2)
+                .SetStyle(new NotificationCompat.BigTextStyle().BigText(message))
+                .SetSmallIcon(Resource.Drawable.new_ad);
 
-            if (!isReopened)
-                builder.SetPriority(NotificationCompat.PriorityMax);
+            builder.SetPriority(NotificationCompat.PriorityMax);
 
             builder.SetSound(Android.Net.Uri.Parse("android.resource://" + Android.App.Application.Context.PackageName + "/raw/" + ring));
 
@@ -91,7 +91,7 @@ namespace avito_parse.Droid
                     builder.SetLights(unchecked((int)0xFFFFFFF0), 500, 1000);
                 }
             }
-
+            
             var notification = builder.Build();
             manager.Notify(messageId, notification);
 

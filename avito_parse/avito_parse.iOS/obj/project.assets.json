@@ -26,11 +26,11 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.6.0": {
+      "MarcTron.Admob/1.6.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
+          "Xamarin.Forms": "5.0.0.1905",
           "Xamarin.Google.iOS.MobileAds": "7.66.0"
         },
         "compile": {
@@ -543,14 +543,15 @@
           "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
-      "Xamarin.Essentials/1.6.0": {
+      "Xamarin.Essentials/1.6.1": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
         },
         "frameworkAssemblies": [
           "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "System.Drawing.Common.dll",
+          "System.Numerics"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -577,7 +578,7 @@
           "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
         }
       },
-      "Xamarin.Forms/5.0.0.1874": {
+      "Xamarin.Forms/5.0.0.2012": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -763,11 +764,11 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.6.0": {
+      "MarcTron.Admob/1.6.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
+          "Xamarin.Forms": "5.0.0.1905",
           "Xamarin.Google.iOS.MobileAds": "7.66.0"
         },
         "compile": {
@@ -1206,14 +1207,15 @@
           "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
-      "Xamarin.Essentials/1.6.0": {
+      "Xamarin.Essentials/1.6.1": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
         },
         "frameworkAssemblies": [
           "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "System.Drawing.Common.dll",
+          "System.Numerics"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -1240,7 +1242,7 @@
           "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
         }
       },
-      "Xamarin.Forms/5.0.0.1874": {
+      "Xamarin.Forms/5.0.0.2012": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -1426,11 +1428,11 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.6.0": {
+      "MarcTron.Admob/1.6.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
+          "Xamarin.Forms": "5.0.0.1905",
           "Xamarin.Google.iOS.MobileAds": "7.66.0"
         },
         "compile": {
@@ -1869,14 +1871,15 @@
           "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
-      "Xamarin.Essentials/1.6.0": {
+      "Xamarin.Essentials/1.6.1": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
         },
         "frameworkAssemblies": [
           "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "System.Drawing.Common.dll",
+          "System.Numerics"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -1903,7 +1906,7 @@
           "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
         }
       },
-      "Xamarin.Forms/5.0.0.1874": {
+      "Xamarin.Forms/5.0.0.2012": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -2089,11 +2092,11 @@
           "lib/netstandard2.0/Ben.Demystifier.dll": {}
         }
       },
-      "MarcTron.Admob/1.6.0": {
+      "MarcTron.Admob/1.6.1": {
         "type": "package",
         "dependencies": {
           "Xamarin.Build.Download": "0.10.0",
-          "Xamarin.Forms": "4.2.0.815419",
+          "Xamarin.Forms": "5.0.0.1905",
           "Xamarin.Google.iOS.MobileAds": "7.66.0"
         },
         "compile": {
@@ -2532,14 +2535,15 @@
           "buildTransitive/Xamarin.Build.Download.targets": {}
         }
       },
-      "Xamarin.Essentials/1.6.0": {
+      "Xamarin.Essentials/1.6.1": {
         "type": "package",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
         },
         "frameworkAssemblies": [
           "OpenTK-1.0",
-          "System.Drawing.Common.dll"
+          "System.Drawing.Common.dll",
+          "System.Numerics"
         ],
         "compile": {
           "lib/xamarinios10/Xamarin.Essentials.dll": {}
@@ -2566,7 +2570,7 @@
           "buildTransitive/Xamarin.Firebase.iOS.Core.targets": {}
         }
       },
-      "Xamarin.Forms/5.0.0.1874": {
+      "Xamarin.Forms/5.0.0.2012": {
         "type": "package",
         "compile": {
           "lib/Xamarin.iOS10/Xamarin.Forms.Core.dll": {},
@@ -2779,21 +2783,20 @@
         "src/Ben.Demystifier/ValueTupleResolvedParameter.cs"
       ]
     },
-    "MarcTron.Admob/1.6.0": {
-      "sha512": "TmgkmPdrtuutjWmxJtVTtDg+QzoENXL9BfF8SI2ptj3lB1gmxc706WvhhYGpEuzC7GSCUujrIu3B/4SU9AGX/g==",
+    "MarcTron.Admob/1.6.1": {
+      "sha512": "I9tbe3YIwuBtfYuM8XFNx6NIyy4ln1QVBQv/SZUHUsKKnLiyaZGeTaYF3eg02t94i0qsWbR4KkaSBGJ+99D10g==",
       "type": "package",
-      "path": "marctron.admob/1.6.0",
+      "path": "marctron.admob/1.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/monoandroid81/Plugin.MtAdmob.dll",
-        "lib/monoandroid90/Plugin.MtAdmob.dll",
+        "lib/monoandroid10.0/Plugin.MtAdmob.dll",
         "lib/netstandard1.0/Plugin.MtAdmob.dll",
         "lib/netstandard2.0/Plugin.MtAdmob.dll",
         "lib/uap10.0.18362/Plugin.MtAdmob.dll",
         "lib/uap10.0.18362/Plugin.MtAdmob.pri",
         "lib/xamarinios10/Plugin.MtAdmob.dll",
-        "marctron.admob.1.6.0.nupkg.sha512",
+        "marctron.admob.1.6.1.nupkg.sha512",
         "marctron.admob.nuspec",
         "readme.txt"
       ]
@@ -4681,10 +4684,10 @@
         "xamarin.build.download.nuspec"
       ]
     },
-    "Xamarin.Essentials/1.6.0": {
-      "sha512": "geJYnjTyPv2npClIkBxLXk9cOV9CPwj/oayA8I4+6NpZc/dIiYxax36m25SW8TrCMR/rvyY44fZBjWBvj7BCQQ==",
+    "Xamarin.Essentials/1.6.1": {
+      "sha512": "gG1Bp4j4bpJQ0dp9MeBJQJ9c8xULauIlhc7Cx5Qw4J2K1c+4Glq5n+gkb9Pm0UA/CevXVqLK5ZXmZkuYI52FgA==",
       "type": "package",
-      "path": "xamarin.essentials/1.6.0",
+      "path": "xamarin.essentials/1.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4728,7 +4731,7 @@
         "lib/xamarinwatchos10/Xamarin.Essentials.pdb",
         "lib/xamarinwatchos10/Xamarin.Essentials.xml",
         "readme.txt",
-        "xamarin.essentials.1.6.0.nupkg.sha512",
+        "xamarin.essentials.1.6.1.nupkg.sha512",
         "xamarin.essentials.nuspec"
       ]
     },
@@ -4749,10 +4752,10 @@
         "xamarin.firebase.ios.core.nuspec"
       ]
     },
-    "Xamarin.Forms/5.0.0.1874": {
-      "sha512": "DddatpRCi4WvM4pBuDfRtKr/KkhFZoVE1KLNFwbOfltVUecqf78y8VaIDDU/iddfNfMSSzoqDBWpZgNj6lFyxA==",
+    "Xamarin.Forms/5.0.0.2012": {
+      "sha512": "Rqc6xvWR/sf+Db5+qRCFmuYTWVp04QWRfwPto2/JHbShSy4Ed53Q2jpoFzsoloXkJA6saD236PlaWAhT6vI4gw==",
       "type": "package",
-      "path": "xamarin.forms/5.0.0.1874",
+      "path": "xamarin.forms/5.0.0.2012",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4961,7 +4964,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.5.0.0.1874.nupkg.sha512",
+        "xamarin.forms.5.0.0.2012.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
     },
@@ -4990,10 +4993,10 @@
   },
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
-      "MarcTron.Admob >= 1.6.0",
+      "MarcTron.Admob >= 1.6.1",
       "Xam.Plugins.Vibrate >= 4.0.0.5",
-      "Xamarin.Essentials >= 1.6.0",
-      "Xamarin.Forms >= 5.0.0.1874",
+      "Xamarin.Essentials >= 1.6.1",
+      "Xamarin.Forms >= 5.0.0.2012",
       "avito_parse >= 1.0.0"
     ]
   },
@@ -5041,7 +5044,7 @@
         "dependencies": {
           "MarcTron.Admob": {
             "target": "Package",
-            "version": "[1.6.0, )"
+            "version": "[1.6.1, )"
           },
           "Xam.Plugins.Vibrate": {
             "target": "Package",
@@ -5049,11 +5052,11 @@
           },
           "Xamarin.Essentials": {
             "target": "Package",
-            "version": "[1.6.0, )"
+            "version": "[1.6.1, )"
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[5.0.0.1874, )"
+            "version": "[5.0.0.2012, )"
           }
         }
       }

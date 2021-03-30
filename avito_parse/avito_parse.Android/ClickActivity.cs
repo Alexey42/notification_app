@@ -18,7 +18,7 @@ namespace avito_parse.Droid
            
             INotificationManager notificationManager = DependencyService.Get<AndroidNotificationManager>();
             notificationManager.ScheduleNotification(Intent.GetStringExtra("Title"),
-                Intent.GetStringExtra("Message"), 2, notifyUrl, "reopened");
+                Intent.GetStringExtra("Message"), Intent.GetStringExtra("Message2"), 2, notifyUrl, "reopened");
 
             Finish();
         }

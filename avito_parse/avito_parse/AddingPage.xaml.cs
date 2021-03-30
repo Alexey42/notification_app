@@ -7,6 +7,7 @@ using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AngleSharp.Html.Parser;
+using AngleSharp;
 
 namespace avito_parse
 {
@@ -52,11 +53,11 @@ namespace avito_parse
                 //url = @"https://www.avito.ru/rossiya/avtomobili?cd=1";
             }
 
-            AngleSharp.Html.Dom.IHtmlDocument doc = null;
-            using (var client = new HttpClient())
-            {
-                HttpResponseMessage request = new HttpResponseMessage();
-                try { request = await client.GetAsync(url); }
+            IConfiguration config;
+
+                try { 
+                    config = Configuration.Default.WithDefaultLoader(); 
+                }
                 catch
                 {
                     Url.BackgroundColor = Color.FromHex("#FA9081");
@@ -64,21 +65,16 @@ namespace avito_parse
                     loading.IsVisible = false;
                     return;
                 }
-                var parser = new HtmlParser();
-                var response = await request.Content.ReadAsStringAsync();
-                doc = parser.ParseDocument(response);
+                var doc = await BrowsingContext.New(config).OpenAsync(url);
 
-                client.Dispose();
-                request.Dispose();
-            }
             var _site = "";
             var _name = "";
             List<string> _ads = new List<string>();
 
             if (url.Contains("avito"))
             {
-                if (!url.Contains("&sort=date"))
-                    url += "&sort=date";
+                //if (!url.Contains("&sort=date"))
+                //    url += "&sort=date";
 
                 try {
                     if (doc.QuerySelector("div.b-404").InnerHtml.Length>0)
@@ -253,6 +249,8 @@ namespace avito_parse
             {
                 formatter.Serialize(fs, Trackings.list);
             }
+
+            doc.Dispose();
 
             await Navigation.PopModalAsync();
             await Navigation.PushModalAsync(new MainPage());        

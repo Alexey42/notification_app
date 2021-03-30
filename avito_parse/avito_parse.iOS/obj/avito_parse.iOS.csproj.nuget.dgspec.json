@@ -44,7 +44,7 @@
           "dependencies": {
             "MarcTron.Admob": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.6.1, )"
             },
             "Xam.Plugins.Vibrate": {
               "target": "Package",
@@ -52,11 +52,11 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.6.0, )"
+              "version": "[1.6.1, )"
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[5.0.0.1874, )"
+              "version": "[5.0.0.2012, )"
             }
           }
         }
